@@ -1,0 +1,18 @@
+#summary List of sites for which the extension will not operate.
+
+= Introduction =
+
+There are some sites on which the extension is designed not to operate.  This is primarily due to performance reasons, where the developer or others have noted that the use of the extension has caused significant performance degradation, often making the site nearly unusable.  On these blocked pages, short URLs are not expanded and the popup does not appear.
+
+Suggestions or changes to improve the extension's performance are always welcome and can be made by creating an Issue in the issue tracker.
+
+
+= Details =
+
+The following sites are blocked due to performance reasons:
+ * http://web.mail.com
+ * http://www.facebook.com
+
+The following sites are blocked because they were blocked by the original Greasemonkey script or Google Chrome extension, to allow the pages to demonstrate the extension's function:
+ * http://longurl.org
+ * http://userscripts.org/scripts/show/52584
