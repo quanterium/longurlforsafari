@@ -9,7 +9,7 @@ Suggestions or changes to improve the extension's performance are always welcome
 
 = Details =
 
-The following sites are blocked due to performance reasons:
+The following sites are blocked for performance reasons:
  * http://web.mail.com
  * http://www.facebook.com
 
