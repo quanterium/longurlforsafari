@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>showPopup</string>
+		<key>Title</key>
+		<string>Show tooltip</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<true/>
+		<key>Key</key>
+		<string>replaceHref</string>
+		<key>Title</key>
+		<string>Replace target</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>replaceVisibleHref</string>
+		<key>Title</key>
+		<string>Replace visible link</string>
+		<key>Titles</key>
+		<array>
+			<string>No</string>
+			<string>With page title</string>
+			<string>With long link</string>
+		</array>
+		<key>Type</key>
+		<string>PopUpButton</string>
+		<key>Values</key>
+		<array>
+			<real>0.0</real>
+			<real>1</real>
+			<real>2</real>
+		</array>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<false/>
+		<key>Key</key>
+		<string>forceVisibleHref</string>
+		<key>Title</key>
+		<string>Change link text to page title if it's not a URL</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<string>Separator</string>
+	</dict>
+	<dict>
+		<key>Title</key>
+		<string>Tooltip contents</string>
+		<key>Type</key>
+		<string>Group</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>1</real>
+		<key>FalseValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>showTitle</string>
+		<key>Title</key>
+		<string>Title</string>
+		<key>TrueValue</key>
+		<real>1</real>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>0.0</real>
+		<key>FalseValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>showMetaDescription</string>
+		<key>Title</key>
+		<string>Description</string>
+		<key>TrueValue</key>
+		<real>1</real>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>0.0</real>
+		<key>FalseValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>showMetaKeywords</string>
+		<key>Title</key>
+		<string>Keywords</string>
+		<key>TrueValue</key>
+		<real>1</real>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>0.0</real>
+		<key>FalseValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>showContentType</string>
+		<key>Title</key>
+		<string>Content type</string>
+		<key>TrueValue</key>
+		<real>1</real>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>0.0</real>
+		<key>FalseValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>showRelCanonical</string>
+		<key>Title</key>
+		<string>Canonical URL</string>
+		<key>TrueValue</key>
+		<real>1</real>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>0.0</real>
+		<key>FalseValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>showAllRedirects</string>
+		<key>Title</key>
+		<string>All redirects</string>
+		<key>TrueValue</key>
+		<real>1</real>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
+</array>
+</plist>
