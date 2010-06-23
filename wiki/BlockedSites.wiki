@@ -6,6 +6,8 @@ There are some sites on which the extension is designed not to operate.  This is
 
 Suggestions or changes to improve the extension's performance are always welcome and can be made by creating an Issue in the issue tracker.
 
+If you encounter other sites where the extension is causing problems, please notify the developers by creating an Issue in the issue tracker.
+
 
 = Details =
 
