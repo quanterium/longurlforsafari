@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>David Mueller</string>
+	<key>CFBundleDisplayName</key>
+	<string>LongURL for Safari</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.quanterium.longurlforsafari</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Blacklist</key>
+		<array>
+			<string>http://userscripts.org/scripts/show/52584</string>
+			<string>http://longurl.org/*</string>
+			<string>http://web.mail.com/*</string>
+			<string>http://www.facebook.com/*</string>
+		</array>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>LongURL4Safari.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Use LongURL.org to expand short URLs</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://longurlforsafari.googlecode.com/svn/release/update_manifest.plist</string>
+	<key>Website</key>
+	<string>http://code.google.com/p/longurlforsafari/</string>
+</dict>
+</plist>

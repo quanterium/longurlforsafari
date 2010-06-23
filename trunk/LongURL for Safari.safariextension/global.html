@@ -1,0 +1,351 @@
+<!DOCTYPE HTML>
+<!--
+Copyright (c) 2010, David Mueller, TiTi
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the names of the the developers nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL DAVID MUELLER NOR TITI BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Based on the "LongURL" Google Chrome extension, version 1.7 developed by TiTi,
+released undeer the WTFPL 2.0 license.
+https://chrome.google.com/extensions/detail/oldnehmjgfcannmkgkojafngdkhfkdpd
+-->
+
+<!--
+This script is using the LongURL API : http://longurl.org/api
+
+By default, this script replace the href="" attribute of the link with the long url.
+->This means your browser won't call the url shortener website when you'll click the link.
+This is voluntary, because thoses services are useless and dangerous : obfuscation act like a third DNS resolver.
+See : http://www.codinghorror.com/blog/archives/001276.html
+By default this script also replace the content of the a tag (visible text) with the title of the page.
+
+I think the expand function - as seen in twitter search results for instance - is boring and useless for the user.
+Plus there's the security problem with the shortened links.
+Several possibilities :
+-Call the API each time needed (onmouseover) ; but user have to wait & can rapidly click (before xhr return the long-url)
+-Request at page load if there is a/some link(s) in the page, in order to process tiny url
+  -In that case don't forget to take car of new data (ajax)
+=> My script is using the second possibility.
+
+== Opera issues ==
+Another problem : Opera XML Store only works with Widgets... so we cannot store the list of supported services for now.
+I know we can emulate GM functions, see http://www.howtocreate.co.uk/operaStuff/userJavaScript.html
+But: using cookies is not cool. It's a workaround for a domain for sure, but it is not clean.
+Therefore two possibilities :
+-Request a list of know services each time this user script is called (=> for each web page you visit!) ; downside = network call (cost time + load[for longurl.org])
+-Write the list in plain text in the code ; downside = not updated, but js callback simply won't work if long url return an error [not dramatic]
+=> That second solution is not too bad.
+
+I'm using the JSON syntax for objects (aka 'Literal Object', recommended by experts like Douglas Crockford).
+I'm using unintrusive dynamic script nodes [not anymore for GreaseMonkey users] : http://tech.bluesmoon.info/2006/10/unintrusive-dynamic-script-nodes.html
+
+This script is mainly targetted for Opera users.
+It seems user scripts also work with others browsers than Opera & GreaseMonkey, like Safari, Chrome or IE.
+I'll be happy to take a look... if I've got enough time! If the script doesn't work, please send me a message.
+... So here we are, Chrome version for 1.6 :) Chrome extensions mecanism involve another architecture, so I had to cut my script in various parts between background.html, popup.html, options.html & LongURL4Chrome.js ; but it think it's more efficient right now ...
+
+To send me comments or questions : anth.ibug at gmail.
+
+------------------
+TODO:
+
+-Google Chrome version need better comments and code explanation, better variables name, better architecture?, ...
+
+-que faire si le site détruit ma div :-( possible ?
+-make it work for cloned nodes, see checkLink function
+-Problems with the tooltip on the borders of the screen (not visible)
+-update services list...
+
+------------------
+CHANGELOG:
+1.0 :
+-Initial release based on Google Chrome version 1.7
+
+CHANGELOG from Google Chrome version:
+
+1.7 : [only for Google Chrome]
+-Added localStorage to preserve settings when the browser is closed
+
+1.6 : [only for Google Chrome]
+-Chrome extension version
+-zIndex & wordWrap style for tooltip
+-Services list updated (235)
+
+1.5 :
+-Prevent memory leak, see http://ajaxian.com/archives/dynamic-script-generation-and-memory-leaks
+
+1.4 :
+-optimize showTooltip function -> 10x faster with ff \o/ (mouse over -> tooltip time to appear)
+-remove processRequest & showTooltip useless parameter (json), using LongURL.storedRequests[url] instead
+-added GM_xmlhttpRequest for FF users ; remove use of unsafeWindow :) ; use of JSON.parse if supported
+-added try-catch block
+
+-Still don't understand why it's not working with 'Twitter Sidebar Replies', processRequest is called, and modify DOM ! But no repercusion on the screen, W.T.F. ?
+-tweetbe.at is working with Opera, not with Firefox, why ? +really slow with FF
+
+1.3 :
+-added option storedRequests
+-reduce number of requests by storing results
+-Tried to make the script work with 'Twitter Sidebar Replies' userscript - http://userscripts.org/scripts/show/36635
+-> Concerning GreaseMonkey user only, because this script doesn't work with Opera.
+But somehow firefox refuse to create the network request after script injection : with firebug check html->head->scripts...
+Thoses scripts which stay indicate 'Failed to load source for'. Really weird = clic edit, add a character and remove it rapidly, clic edit(stop) -> ff load the script and execute it perfectly, url is replaced ! WTF ?! (first comment line 145 to avoid js error)
+
+1.2 :
+-added ajax support :) - Examples : 'more' button on twitter, tweetbe.at, twitter100.com, ...
+-added option : showPopup
+-added option : forceVisibleHref
+-reduce 'Media type' font size in the tooltip
+-exclude http://longurl.org/*
+-exclude the userscript.org tutorial itself ^^
+
+1.1 :
+-added https support (concern only GreaseMonkey users)
+-reduce alpha transparency of the popup
+
+1.0 : Initial release
+------------------
+-->
+<html>
+<head>
+<script>
+var LongURL = 
+{
+  options:
+  {
+    showPopup: true, // Show a tooltip when the mouse is over the link
+    replaceHref: true, // For security and rapidity, true is more than recommended ; Replace the link your browser will hit if you click the link
+    replaceVisibleHref: 0, // 0: no, 1: title, 2: link ; default=1 as recommended by W3C : http://www.w3.org/TR/WCAG10-HTML-TECHS/#link-text ; http://www.w3.org/TR/WCAG20-HTML-TECHS/
+    forceVisibleHref: false, // Force change of the link text even if it's not the target - Example: <a href="http://is.gd/w">Home page of Google</a>
+    logHeader: '[LongURL]',
+    
+    // Tooltip content options
+    showAllRedirects: 0,
+    showContentType: 0,
+    showTitle: 1,
+    showRelCanonical: 0,
+    showMetaKeywords: 0,
+    showMetaDescription: 0
+  },
+  
+  callbacks: [], // The global callbacks array that stores a reference to all active callbacks
+  
+  preparedRequests: 0, // Total number of requests to LongURL API
+  
+  storedRequests: {},
+  
+  known_services: {},
+  
+  // Call LongURL webservice and define callback
+  prepareRequest: function(msgEvent)
+  {
+    var link = msgEvent.message;
+    if(LongURL.storedRequests[link])
+    {
+      // This tinyurl has already been listed, maybe in another page, stop here!
+      
+      var json = LongURL.storedRequests[link];
+      console.log(LongURL.options.logHeader + '[Cache] Send ' + link + ' -> ' + json['long-url']);
+      msgEvent.target.page.dispatchMessage('lookupResult', {'link': link, 'json':json}); // Send data to content script
+      return;
+    }
+    
+    LongURL.storedRequests[link] = null; // Init
+    //console.log(LongURL.options.logHeader + ' Getting ' + link);
+    
+    // We create `i` - the current position - so that it will be available to the closure
+    var i = LongURL.callbacks.length;
+    
+    // Now add our custom callback to the callback array so that the added script node can access it
+    LongURL.callbacks[i] = function(json)
+    {
+      // Store the data
+      LongURL.storedRequests[link] = json;
+      
+      // Anaylze result
+      LongURL.processRequest(msgEvent);
+      
+      // Clear out our entry in the callback array since we don't need it anymore
+      LongURL.callbacks[i] = null;
+      delete LongURL.callbacks[i];
+      
+      // Clear out all outer variables referenced in the closure to prevent memory leaks in some browsers (Opera & FF not concerned?)
+      i = null;
+    };
+    
+    var apiurl = 'http://api.longurl.org/v2/expand?';
+    var request = 'url=' + encodeURIComponent(link) +
+    '&all-redirects=' + LongURL.options.showAllRedirects +
+    '&content-type=' + LongURL.options.showContentType +
+    '&response-code=1' +
+    '&title=' + LongURL.options.showTitle +
+    '&rel-canonical=' + LongURL.options.showRelCanonical +
+    '&meta-keywords=' + LongURL.options.showMetaKeywords +
+    '&meta-description=' + LongURL.options.showMetaDescription +
+    '&format=json';
+    
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(data)
+    {
+      if(xhr.readyState == 4)
+      {
+        if(xhr.status == 200)
+        {          
+          LongURL.callbacks[i](JSON.parse(xhr.responseText));
+        }
+        else
+        {
+          console.log(LongURL.options.logHeader + '[ERROR] xhr.status='+xhr.status);
+        }
+      }
+    }
+    xhr.open('GET', apiurl + request, true);
+    xhr.send();
+    
+    LongURL.preparedRequests++;
+  },
+  
+  // Analyze LongURL result and send data to content script
+  processRequest: function(msgEvent)
+  {
+    try
+    {
+      var link = msgEvent.message;
+      var json = LongURL.storedRequests[link];
+      
+      if(json['response-code'] != 200) // Will never get into the if with LongURL API 2.0?
+      {
+        if(json['messages'])
+        {
+          for(var j = 0; j < json['messages'].length; j++)
+          {
+            throw('Server Response - ' + json['messages'][j]['type'] + ': ' + json['messages'][j]['message'] + ' For ' + link);
+          }
+        }
+        else
+        {
+          throw('Server Response Error ' + json['response-code'] + ', for ' + link);
+        }
+      }
+      else
+      {
+        console.log(LongURL.options.logHeader + '[Fresh] Got ' + link + ' -> ' + json['long-url']);
+        msgEvent.target.page.dispatchMessage('lookupResult', {'link': link, 'json':json}); // Send data to content script
+      }
+    }
+    catch(err)
+    {
+      console.log(LongURL.options.logHeader + '[ERROR] ' + err);
+    }
+  }
+};
+
+
+//----------
+// Get options from settings in Safari preferences window
+function readSettings(msgEvent)
+{
+  LongURL.options.showPopup = safari.extension.settings.getItem('showPopup');
+  LongURL.options.replaceHref = safari.extension.settings.getItem('replaceHref');
+  LongURL.options.replaceVisibleHref = safari.extension.settings.getItem('replaceVisibleHref');
+  LongURL.options.forceVisibleHref = safari.extension.settings.getItem('forceVisibleHref');
+  LongURL.options.showAllRedirects = safari.extension.settings.getItem('showAllRedirects');
+  LongURL.options.showContentType = safari.extension.settings.getItem('showContentType');
+  LongURL.options.showTitle = safari.extension.settings.getItem('showTitle');
+  LongURL.options.showRelCanonical = safari.extension.settings.getItem('showRelCanonical');
+  LongURL.options.showMetaKeywords = safari.extension.settings.getItem('showMetaKeywords');
+  LongURL.options.showMetaDescription = safari.extension.settings.getItem('showMetaDescription');
+  if (msgEvent != null)
+  {
+    if ((msgEvent.key == 'showAllRedirects') || (msgEvent.key == 'showContentType') || (msgEvent.key == 'showTitle') || (msgEvent.key == 'showRelCananical') || (msgEvent.key == 'showMetaKeywords') || (msgEvent.key == 'showMetaDescription'))
+    {
+      // User changed contents to the tooltip, so flush the cache
+      console.log(LongURL.options.logHeader + '[Cache] Flushed due to tooltip contents change');
+      LongURL.storedRequests = {};
+    }
+  }
+};
+
+
+// Get the list of supported services from LongURL
+function requestServices()
+{
+  var apiurl = 'http://api.longurl.org/v2/services?';
+  var request = 'format=json';
+  
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function(data)
+  {
+    if(xhr.readyState == 4)
+    {
+      if(xhr.status == 200)
+      {  
+        LongURL.known_services = JSON.parse(xhr.responseText);
+      }
+      else
+      {
+        console.log(LongURL.options.logHeader + '[ERROR] xhr.status='+xhr.status);
+      }
+    }
+  }
+  xhr.open('GET', apiurl + request, true);
+  xhr.send();
+}
+
+//----------
+
+/**
+* Handles data sent via safari.self.tab.dispatchMessage().
+*/
+function onRequest(msgEvent)
+{
+  // message is a request to do a LongURL lookup
+  if (msgEvent.name === 'getLink')
+  {
+    LongURL.prepareRequest(msgEvent);
+  }
+  // message is a requiest for the configuration options
+  else if (msgEvent.name === 'getOptions')
+  {
+    msgEvent.target.page.dispatchMessage('setOptions', LongURL.options);
+  }
+  // message is a request for the list of services
+  else if (msgEvent.name === 'getServices')
+  {
+    msgEvent.target.page.dispatchMessage('setServices', LongURL.known_services);
+  }
+};
+
+// connect message listeners
+safari.application.addEventListener('message', onRequest, false);
+safari.extension.settings.addEventListener('change', readSettings, false);
+
+// initialize settings when Safari first loads
+readSettings(null);
+
+// get the list of services, we do this once when the extension loads (normally when Safari starts)
+requestServices();
+
+</script>
+</head>
+<body></body></html>
