@@ -1,4 +1,4 @@
-#summary History of this extension.
+#summary Release history of this extension.
 
 = Introduction =
 
