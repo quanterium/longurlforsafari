@@ -1,0 +1,27 @@
+#summary Description of options in the Preferences panel.
+
+= Introduction =
+
+This page details the options available in the extension's Preferences panel.
+
+
+= Details =
+
+http://longurlforsafari.googlecode.com/svn/wiki/preferences.png
+
+*Show tooltip*: If this option is checked, a tooltip will appear whenever your mouse is over a short link.  The contents of the link can be altered by selecting from the options in the *Tooltip options* section. By default, the long and short URLs and the page title are shown.  It is not currently possible to disable showing the long and short URLs in the tooltip. This option is checked by default.
+ * *Title*: Show the web page title. This option is checked by default.
+ * *Description*: Show a description of the page. This option is not checked by default.
+ * *Keywords*: Show the web page keywords. This option is not checked by default.
+ * *Content type*: Show the content type of the page. This option is not checked by default.
+ * *Canonical URL*: Show the "preferred" canonical URL. This option is not checked by default.
+ * *All redirects*: Show all of the redirects followed to get from the short URL to the long URL. This option is not checked by default.
+
+*Replace target*: If this option is checked, the extension will replace the target of the link with the long URL. This means when the link is clicked, the web browser will not first attempt to go to the short URL. This does not alter the appearance of the link on the web page. This option is checked by default.
+
+*Replace visible link*: This option will replace the short URL as it is displayed by the browser.
+ * *No*: This option disables the feature; the visible link is not changed. This is the default.
+ * *With page title*: This option replaces the short URL with the web page title. It is the same as the title displayed in the tooltip.
+ * *With long link*: This option replaces the short URL with the long URL.
+
+*Change link text to page title if it's not a URL*: This option will cause the *Replace visible link* option to replace the text of the link with the selected option even if the visible text is not the short URL.
