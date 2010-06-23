@@ -30,7 +30,7 @@ This page provides a release history for the extension.
 
 *1.4*:
  * optimize showTooltip function -> 10x faster with ff \o/ (mouse over -> tooltip time to appear)
- * remove processRequest & showTooltip useless parameter (json), using LongURL.storedRequests[url] instead
+ * remove processRequest & showTooltip useless parameter (json), using LongURL.storedRequests(url) instead
  * added GM_xmlhttpRequest for FF users ; remove use of unsafeWindow :) ; use of JSON.parse if supported
  * added try-catch block
 
