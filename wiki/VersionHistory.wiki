@@ -1,0 +1,58 @@
+#summary History of this extension.
+
+= Introduction =
+
+This page provides a release history for the extension.
+
+
+= Safari Extension History =
+
+*1.0*: June 22, 2010 - Subversion revision 4
+ * Initial release.
+ * Based on Google Chrome 1.7 extension with additional changes:
+  * Reorganization needed to support differences between Chrome and Safari extension architectures
+  * Added ability to customize tooltip contents
+  * Load list of supported sites from LongURL.org when Safari starts
+
+
+= Google Chrome/Greasemonkey Script Extension History =
+
+*1.7*: (only for Google Chrome)
+ * Added localStorage to preserve settings when the browser is closed
+
+*1.6*: (only for Google Chrome)
+ * Chrome extension version
+ * zIndex & wordWrap style for tooltip
+ * Services list updated (235)
+
+*1.5*:
+ * Prevent memory leak, see http://ajaxian.com/archives/dynamic-script-generation-and-memory-leaks
+
+*1.4*:
+ * optimize showTooltip function -> 10x faster with ff \o/ (mouse over -> tooltip time to appear)
+ * remove processRequest & showTooltip useless parameter (json), using LongURL.storedRequests[url] instead
+ * added GM_xmlhttpRequest for FF users ; remove use of unsafeWindow :) ; use of JSON.parse if supported
+ * added try-catch block
+
+ * Still don't understand why it's not working with 'Twitter Sidebar Replies', processRequest is called, and modify DOM ! But no repercusion on the screen, W.T.F. ?
+ * tweetbe.at is working with Opera, not with Firefox, why ? +really slow with FF
+
+*1.3*:
+ * added option storedRequests
+ * reduce number of requests by storing results
+ * Tried to make the script work with 'Twitter Sidebar Replies' userscript - http://userscripts.org/scripts/show/36635 -> Concerning !GreaseMonkey user only, because this script doesn't work with Opera. But somehow firefox refuse to create the network request after script injection : with firebug check html->head->scripts... Those scripts which stay indicate 'Failed to load source for'. Really weird = clic edit, add a character and remove it rapidly, clic edit(stop) -> ff load the script and execute it perfectly, url is replaced ! WTF ?! (first comment line 145 to avoid js error)
+
+*1.2*:
+ * added ajax support :) - Examples : 'more' button on twitter, tweetbe.at, twitter100.com, ...
+ * added option : showPopup
+ * added option : forceVisibleHref
+ * reduce 'Media type' font size in the tooltip
+ * exclude http://longurl.org/*
+ * exclude the userscript.org tutorial itself ^^
+
+*1.1*:
+ * added https support (concern only !GreaseMonkey users)
+ * reduce alpha transparency of the popup
+
+*1.0*:
+ * Initial release
