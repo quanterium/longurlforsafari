@@ -148,5 +148,19 @@
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<real>1</real>
+		<key>FalseValue</key>
+		<real>0.0</real>
+		<key>Key</key>
+		<string>showShortUrl</string>
+		<key>Title</key>
+		<string>Short URL</string>
+		<key>TrueValue</key>
+		<real>1</real>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
 </array>
 </plist>
