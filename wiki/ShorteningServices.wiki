@@ -1,0 +1,34 @@
+#summary A list of URL shortening services supported by this extension.
+
+= Introduction =
+
+LongURL.org supports virtually all URL shortening services. There is a [http://longurl.org/services list of known supported services] on their web site. However, there are additional services noticed by the extension's developers that work but are not included on that list. Support for these additional services is built into the extension directly.
+
+
+= Details =
+
+When Safari starts, the extension retrieves the current list of supported services from LongURL.org.  The extension adds the following services. Note that this list can change over time as services are added to the LongURL.org list.
+
+ * 4sq.com
+ * azc.cc
+ * bcool.bz
+ * cot.ag
+ * ctvr.us
+ * dlvr.it
+ * fb.me
+ * fk.com
+ * lat.ms
+ * nblo.gs
+ * oc1.us
+ * omoikane.net
+ * on.mktw.net
+ * oohja.com
+ * sdut.us
+ * tpm.ly
+ * vgn.am
+ * w55.de
+ * x.vu
+ * yhoo.it
+ * youtu.be
+
+If you find a shortening service that doesn't work with the extension, our first suggestion is to notify LongURL.org so that the service can be added and will then be supported by the extension automatically. You can also create and Issue in the issue tracker to have it added to the extension directly.
