@@ -29,6 +29,13 @@ released undeer the WTFPL license.
 https://chrome.google.com/extensions/detail/oldnehmjgfcannmkgkojafngdkhfkdpd
 */
 
+// List of processed links for the current page
+var waitingItems = {};
+
+// local copies of options and known_services from global.html
+var options = {};
+var known_services = {};
+
 var tooltip = 
 {
   content: null, // tooltip div element
@@ -57,7 +64,8 @@ var tooltip =
     if(json['title'])
       temp += '<b>Title:</b> <span style="font-size:20px;color:#2200CC">'+json['title'] + '</span><br />';
     temp += '<br />';
-    temp += '<b>ShortURL:</b> <span style="color:#008000">' + tinyurl + '</span><br />';
+    if(options.showShortUrl == 1)
+      temp += '<b>ShortURL:</b> <span style="color:#008000">' + tinyurl + '</span><br />';
     if(json['meta-description'])
       temp += '<b>Description:</b> <span style="font-size:13px;color:#2200CC">'+json['meta-description'] + '</span><br />';
     if(json['all-redirects'] || json['content-type'] || json['rel-canonical'] || json['meta-keywords'])
@@ -87,13 +95,6 @@ var tooltip =
     tooltip.content.style.display = 'none';
   }
 }
-
-// List of processed links for the current page
-var waitingItems = {};
-
-// local copies of options and known_services from global.html
-var options = {};
-var known_services = {};
 
 function setOptions(data)
 {

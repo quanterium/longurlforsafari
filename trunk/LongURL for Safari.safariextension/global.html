@@ -81,6 +81,9 @@ CHANGELOG:
 1.0 :
 -Initial release based on Google Chrome version 1.7
 
+1.1 :
+- Issue 1: Added option to hide ShortURL in the tooltip
+
 CHANGELOG from Google Chrome version:
 
 1.7 : [only for Google Chrome]
@@ -145,7 +148,8 @@ var LongURL =
     showTitle: 1,
     showRelCanonical: 0,
     showMetaKeywords: 0,
-    showMetaDescription: 0
+    showMetaDescription: 0,
+    showShortUrl: 1
   },
   
   callbacks: [], // The global callbacks array that stores a reference to all active callbacks
@@ -275,6 +279,7 @@ function readSettings(msgEvent)
   LongURL.options.showRelCanonical = safari.extension.settings.getItem('showRelCanonical');
   LongURL.options.showMetaKeywords = safari.extension.settings.getItem('showMetaKeywords');
   LongURL.options.showMetaDescription = safari.extension.settings.getItem('showMetaDescription');
+  LongURL.options.showShortUrl = safari.extension.settings.getItem('showShortUrl');
   if (msgEvent != null)
   {
     if ((msgEvent.key == 'showAllRedirects') || (msgEvent.key == 'showContentType') || (msgEvent.key == 'showTitle') || (msgEvent.key == 'showRelCananical') || (msgEvent.key == 'showMetaKeywords') || (msgEvent.key == 'showMetaDescription'))
