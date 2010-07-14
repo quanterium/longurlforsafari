@@ -7,7 +7,11 @@ This page provides a release history for the extension.
 
 = Safari Extension History =
 
-*1.0*: June 22, 2010 - Subversion revision 4
+*1.1*: July 13, 2010 - Subversion r15
+ * Issue 1: Added option to hide ShortURL in the tooltip
+ * Added an internal list of additional services that work but LongURL.org does not have on their list yet
+
+*1.0*: June 22, 2010 - Subversion r4
  * Initial release.
  * Based on Google Chrome 1.7 extension with additional changes:
   * Reorganization needed to support differences between Chrome and Safari extension architectures
