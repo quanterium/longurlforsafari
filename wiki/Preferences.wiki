@@ -16,6 +16,7 @@ http://longurlforsafari.googlecode.com/svn/wiki/preferences.png
  * *Content type*: Show the content type of the page. This option is not checked by default.
  * *Canonical URL*: Show the "preferred" canonical URL. This option is not checked by default.
  * *All redirects*: Show all of the redirects followed to get from the short URL to the long URL. This option is not checked by default.
+ * *Short URL*: Show the Short URL. This option is checked by default.
 
 *Replace target*: If this option is checked, the extension will replace the target of the link with the long URL. This means when the link is clicked, the web browser will not first attempt to go to the short URL. This does not alter the appearance of the link on the web page. This option is checked by default.
 
