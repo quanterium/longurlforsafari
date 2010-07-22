@@ -13,7 +13,9 @@ If you encounter other sites where the extension is causing problems, please not
 
 The following sites are blocked for performance reasons:
  * http://web.mail.com
+ * http://www.amazon.com
  * http://www.facebook.com
+ * http://www.amazon.com
 
 The following sites are blocked because they were blocked by the original Greasemonkey script or Google Chrome extension, to allow the pages to demonstrate the extension's function:
  * http://longurl.org
