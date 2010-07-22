@@ -10,15 +10,22 @@ LongURL.org supports virtually all URL shortening services. There is a [http://l
 When Safari starts, the extension retrieves the current list of supported services from LongURL.org.  The extension adds the following services. Note that this list can change over time as services are added to the LongURL.org list.
 
  * 4sq.com
+ * amzn.com
  * azc.cc
  * bcool.bz
+ * conta.cc
  * cot.ag
  * ctvr.us
  * dlvr.it
+ * ex-c.it
  * fb.me
  * fk.com
+ * go.usa.gov
+ * hsblinks.com
  * lat.ms
+ * mke.me
  * nblo.gs
+ * n.pr
  * oc1.us
  * omoikane.net
  * on.mktw.net
