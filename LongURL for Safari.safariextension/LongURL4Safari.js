@@ -242,23 +242,10 @@ function start()
     
     //------------------------------
     
-    // !!x is true if x is not zero and false otherwise : forced cast to boolean.
-    var isXpathSupported = !!(document.implementation && document.implementation.hasFeature && document.implementation.hasFeature('XPath', '3.0'));
-    if(isXpathSupported) // XPath
+    var links = document.evaluate('//a[@href]', document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null); // XPath (faster)
+    for(var i = 0; i < links.snapshotLength; i++)
     {
-      var links = document.evaluate('//a[@href]', document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null); // XPath (faster)
-      for(var i = 0; i < links.snapshotLength; i++)
-      {
-        checkLink(links.snapshotItem(i));
-      }
-    }
-    else // DOM
-    {
-      var linkss = document.links;
-      for(var j = 0; j < linkss.length; j++)
-      {
-        checkLink(linkss[j]);
-      }
+      checkLink(links.snapshotItem(i));
     }
   }
   catch(err)
