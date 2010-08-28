@@ -9,7 +9,7 @@ This page provides a release history for the extension.
 
 *1.2*: August 27, 2010 - Subversion r31
  * Removed XPath check since Safari 5 supports it 
- * Issue 2: Implement user-editable blacklist (based on JavaScript Blacklist extension)
+ * Issue 2: Implement user-editable blacklist (based on !JavaScript Blacklist extension)
  * Removed amazon.com, tripit.com, facebook.com, mail.com from internal blacklist
  * Resolve performance issues by preventing the extension from running on embedded pages/frames
  * Additions to additional services list
