@@ -78,6 +78,13 @@ TODO:
 
 ------------------
 CHANGELOG:
+1.2:
+- Removed XPath check since Safari 5 supports it
+- Issue 2: Implement user-editable blacklist (based on JavaScript Blacklist extension)
+- Removed amazon.com, tripit.com, facebook.com, mail.com from internal blacklist
+- Resolve performance issues by preventing the extension from running on embedded
+  pages/frames 
+
 1.1.1 :
 - Issue 2: Added amazon.com to blocked sites
 - Additions to additional services list
@@ -269,6 +276,49 @@ var LongURL =
   }
 };
 
+// Escapes special characters with backslashes.
+function escape(text) {
+	if (!arguments.callee.escapeRE) {
+		var specials = [ ".", "*", "+", "?", "|", "(", ")", "[", "]", "{", "}", "\\" ];
+		arguments.callee.escapeRE = new RegExp( "(\\" + specials.join("|\\") + ")", "g" );
+	}
+	return text.replace(arguments.callee.escapeRE, "\\$1");
+}
+
+// Rebuild the blacklist from the settings. This is triggered automatically the first
+// time the script runs, and via a listener when the user modifies the settings.
+function rebuildBlacklist() {
+	var str = safari.extension.settings.getItem("blacklist");
+	var sites = str.split(/ *, */);
+	
+	console.log("script blacklist: " + sites);
+	document.blacklistRE = sites;
+}
+
+// Cache the RegExp object in this document for speed.
+function getBlacklistRE() {
+	if (!document.blacklistRE) {
+		rebuildBlacklist();
+	}
+	return document.blacklistRE;
+}
+
+// Returns true if the URL is allowed to load.
+function allowedToLoad(msgEvent) {
+  var blacklistRE = getBlacklistRE();
+  console.log(blacklistRE);
+  console.log(msgEvent.message + ': ' + blacklistRE.indexOf(msgEvent.message));
+  if (blacklistRE.indexOf(msgEvent.message) != -1) {
+    console.log(msgEvent.message + ': false');
+    msgEvent.target.page.dispatchMessage('blacklistResult', 'block');
+  }
+  else
+  {
+    console.log(msgEvent.message + ': true');
+    msgEvent.target.page.dispatchMessage('blacklistResult', 'allow');
+  }
+}
+
 
 //----------
 // Get options from settings in Safari preferences window
@@ -294,7 +344,8 @@ function readSettings(msgEvent)
       LongURL.storedRequests = {};
     }
   }
-};
+  rebuildBlacklist();
+}
 
 
 // Get the list of supported services from LongURL
@@ -364,7 +415,12 @@ function onRequest(msgEvent)
   {
     LongURL.prepareRequest(msgEvent);
   }
-  // message is a requiest for the configuration options
+  // message is a blacklist check
+  else if (msgEvent.name === 'checkBlacklist')
+  {
+    allowedToLoad(msgEvent);
+  }
+  // message is a request for the configuration options
   else if (msgEvent.name === 'getOptions')
   {
     msgEvent.target.page.dispatchMessage('setOptions', LongURL.options);
@@ -374,7 +430,7 @@ function onRequest(msgEvent)
   {
     msgEvent.target.page.dispatchMessage('setServices', LongURL.known_services);
   }
-};
+}
 
 // connect message listeners
 safari.application.addEventListener('message', onRequest, false);

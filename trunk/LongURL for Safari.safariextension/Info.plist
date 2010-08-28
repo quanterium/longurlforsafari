@@ -11,9 +11,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.1</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -25,10 +25,6 @@
 		<array>
 			<string>http://userscripts.org/scripts/show/52584</string>
 			<string>http://longurl.org/*</string>
-			<string>http://web.mail.com/*</string>
-			<string>http://www.facebook.com/*</string>
-			<string>http://www.amazon.com/*</string>
-			<string>http://www.tripit.com/*</string>
 		</array>
 		<key>Scripts</key>
 		<dict>
