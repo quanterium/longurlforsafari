@@ -96,6 +96,21 @@ var tooltip =
   }
 }
 
+function processBlacklistResult(data)
+{
+  if (data == 'allow')
+  {
+    // get the configuration options by sending a message to the global html page
+    safari.self.tab.dispatchMessage('getOptions', null);
+    console.log('[LongUrl] [Allow] Domain "' + document.domain + '" not found on blacklist');
+  }
+  else
+  {
+    // if not allowed, nothing else will happen
+    console.log('[LongUrl] [Block] Domain "' + document.domain + '" matched blacklist with result: ' + data);
+  }
+}
+
 function setOptions(data)
 {
   options = data;
@@ -381,6 +396,11 @@ function handleMessage(msgEvent)
   {
     processHandler(msgEvent.message);
   }
+  // blacklist check result
+  else if (msgEvent.name === 'blacklistResult')
+  {
+    processBlacklistResult(msgEvent.message)
+  }
   // configuration options being sent
   else if (msgEvent.name === 'setOptions')
   {
@@ -392,10 +412,13 @@ function handleMessage(msgEvent)
   }
 }
 
-// register the message handler
-safari.self.addEventListener('message', handleMessage, false);
-
-// get the configuration options by sending a message to the global html page
-safari.self.tab.dispatchMessage('getOptions', null);
+if (window.top === window)
+{
+  // register the message handler
+  safari.self.addEventListener('message', handleMessage, false);
+  
+  // find out if this domain is blocked by sending a message to the global html page
+  safari.self.tab.dispatchMessage('checkBlacklist', window.top.document.domain);
+}
 
 // ]]>
