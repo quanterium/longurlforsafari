@@ -83,7 +83,8 @@ CHANGELOG:
 - Issue 2: Implement user-editable blacklist (based on JavaScript Blacklist extension)
 - Removed amazon.com, tripit.com, facebook.com, mail.com from internal blacklist
 - Resolve performance issues by preventing the extension from running on embedded
-  pages/frames 
+  pages/frames
+- Additions to additional services list
 
 1.1.1 :
 - Issue 2: Added amazon.com to blocked sites
@@ -366,32 +367,49 @@ function requestServices()
         // Add some additional services that LongURL supports but doesn't have on their list yet
         LongURL.known_services['4sq.com'] = eval({'domain':'4sq.com','regex':''});
         LongURL.known_services['amzn.com'] = eval({'domain':'amzn.com','regex':''});
+        LongURL.known_services['arst.ch'] = eval({'domain':'arst.ch','regex':''});
         LongURL.known_services['azc.cc'] = eval({'domain':'azc.cc','regex':''});
+        LongURL.known_services['b2l.me'] = eval({'domain':'b2l.me','regex':''});
         LongURL.known_services['bcool.bz'] = eval({'domain':'bcool.bz','regex':''});
+        LongURL.known_services['chzb.gr'] = eval({'domain':'chzb.gr','regex':''});
         LongURL.known_services['conta.cc'] = eval({'domain':'conta.cc','regex':''});
         LongURL.known_services['cot.ag'] = eval({'domain':'cot.ag','regex':''});
         LongURL.known_services['ctvr.us'] = eval({'domain':'ctvr.us','regex':''});
         LongURL.known_services['dlvr.it'] = eval({'domain':'dlvr.it','regex':''});
         LongURL.known_services['ex-c.it'] = eval({'domain':'ex-c.it','regex':''});
+        LongURL.known_services['fav.me'] = eval({'domain':'fav.me','regex':''});
         LongURL.known_services['fb.me'] = eval({'domain':'fb.me','regex':''});
+        LongURL.known_services['fbshare.me'] = eval({'domain':'fbshare.me','regex':''});
         LongURL.known_services['fk.com'] = eval({'domain':'fk.com','regex':''});
+        LongURL.known_services['gizmo.do'] = eval({'domain':'gizmo.do','regex':''});
         LongURL.known_services['go.usa.gov'] = eval({'domain':'go.usa.gov','regex':''});
         LongURL.known_services['hsblinks.com'] = eval({'domain':'hsblinks.com','regex':''});
         LongURL.known_services['lat.ms'] = eval({'domain':'lat.ms','regex':''});
         LongURL.known_services['mke.me'] = eval({'domain':'mke.me','regex':''});
+        LongURL.known_services['moby.to'] = eval({'domain':'moby.to','regex':''});
         LongURL.known_services['n.pr'] = eval({'domain':'n.pr','regex':''});
         LongURL.known_services['nblo.gs'] = eval({'domain':'nblo.gs','regex':''});
+        LongURL.known_services['nxy.in'] = eval({'domain':'nxy.in','regex':''});
         LongURL.known_services['oc1.us'] = eval({'domain':'oc1.us','regex':''});
         LongURL.known_services['omoikane.net'] = eval({'domain':'omoikane.net','regex':''});
         LongURL.known_services['on.mktw.net'] = eval({'domain':'on.mktw.net','regex':''});
         LongURL.known_services['oohja.com'] = eval({'domain':'oohja.com','regex':''});
+        LongURL.known_services['pub.vitrue.com'] = eval({'domain':'pub.vitrue.com','regex':''});
+        LongURL.known_services['read.bi'] = eval({'domain':'read.bi','regex':''});
+        LongURL.known_services['retwt.me'] = eval({'domain':'retwt.me','regex':''});
+        LongURL.known_services['rww.tw'] = eval({'domain':'rww.tw','regex':''});
         LongURL.known_services['sdut.us'] = eval({'domain':'sdut.us','regex':''});
+        LongURL.known_services['tbd.ly'] = eval({'domain':'tbd.ly','regex':''});
+        LongURL.known_services['tny.com'] = eval({'domain':'tny.com','regex':''});
+        LongURL.known_services['totc.us'] = eval({'domain':'totc.us','regex':''});
         LongURL.known_services['tpm.ly'] = eval({'domain':'tpm.ly','regex':''});
+        LongURL.known_services['url4.eu'] = eval({'domain':'url4.eu','regex':''});
         LongURL.known_services['vgn.am'] = eval({'domain':'vgn.am','regex':''});
         LongURL.known_services['w55.de'] = eval({'domain':'w55.de','regex':''});
         LongURL.known_services['x.vu'] = eval({'domain':'x.vu','regex':''});
         LongURL.known_services['yhoo.it'] = eval({'domain':'yhoo.it','regex':''});
         LongURL.known_services['youtu.be'] = eval({'domain':'youtu.be','regex':''});
+        LongURL.known_services['z0p.de'] = eval({'domain':'z0p.de','regex':''});
       }
       else
       {
