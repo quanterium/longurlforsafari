@@ -9,6 +9,8 @@ This page details the options available in the extension's Preferences panel.
 
 http://longurlforsafari.googlecode.com/svn/wiki/preferences.png
 
+*Do not load on these domains*: A comma separated list of web site domains for which the extension should not run.
+
 *Show tooltip*: If this option is checked, a tooltip will appear whenever your mouse is over a short link.  The contents of the link can be altered by selecting from the options in the *Tooltip options* section. By default, the long and short URLs and the page title are shown.  It is not currently possible to disable showing the long and short URLs in the tooltip. This option is checked by default.
  * *Title*: Show the web page title. This option is checked by default.
  * *Description*: Show a description of the page. This option is not checked by default.
