@@ -9,50 +9,14 @@ LongURL.org supports virtually all URL shortening services. There is a [http://l
 
 When Safari starts, the extension retrieves the current list of supported services from LongURL.org.  The extension adds the following services. Note that this list can change over time as services are added to the LongURL.org list.
 
- * 4sq.com
  * amzn.com
- * arst.ch
- * azc.cc
- * b2l.me
- * bcool.bz
- * chzb.gr
- * conta.cc
- * cot.ag
- * ctvr.us
- * dlvr.it
+ * bbc.in
  * ex-c.it
- * fav.me
- * fb.me
- * fbshare.me
- * fk.com
- * gizmo.do
- * go.usa.gov
- * hsblinks.com
- * lat.ms
- * mke.me
- * moby.to
- * n.pr
- * nblo.gs
- * nxy.in
- * oc1.us
- * omoikane.net
- * on.mktw.net
- * oohja.com
- * pub.vitrue.com
- * read.bi
- * retwt.me
- * rww.tw
- * sdut.us
- * tbd.ly
- * tny.com
- * totc.us
- * tpm.ly
- * url4.eu
- * vgn.am
- * w55.de
- * x.vu
- * yhoo.it
- * youtu.be
- * z0p.de
+ * fk.cm
+ * gu.com
+ * kpbs.us
+ * socuteurl.com
+ * spn.tw
+ * spr.ly
 
 If you find a shortening service that doesn't work with the extension, our first suggestion is to notify LongURL.org so that the service can be added and will then be supported by the extension automatically. You can also create and Issue in the issue tracker to have it added to the extension directly.
