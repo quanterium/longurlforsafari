@@ -7,6 +7,9 @@ This page provides a release history for the extension.
 
 = Safari Extension History =
 
+*1.2.1*: October 8, 2010 - Subversion r39
+ * Modifications to additional services list
+
 *1.2*: August 27, 2010 - Subversion r31
  * Removed XPath check since Safari 5 supports it 
  * Issue 2: Implement user-editable blacklist (based on !JavaScript Blacklist extension)
