@@ -7,6 +7,9 @@ This page provides a release history for the extension.
 
 = Safari Extension History =
 
+*1.2.2*: November 15, 2010 - Subversion r43
+ * Additions to additional services list
+
 *1.2.1*: October 8, 2010 - Subversion r39
  * Modifications to additional services list
 
