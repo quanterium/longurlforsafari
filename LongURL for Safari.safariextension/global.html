@@ -78,6 +78,9 @@ TODO:
 
 ------------------
 CHANGELOG:
+1.2.3:
+- Additions to additional services list
+
 1.2.2:
 - Additions to additional services list
 
@@ -371,15 +374,23 @@ function requestServices()
         LongURL.known_services = JSON.parse(xhr.responseText);
         
         // Add some additional services that LongURL supports but doesn't have on their list yet
+        LongURL.known_services['abcn.ws'] = eval({'domain':'abcn.ws','regex':''});
         LongURL.known_services['amzn.com'] = eval({'domain':'amzn.com','regex':''});
         LongURL.known_services['aol.it'] = eval({'domain':'aol.it','regex':''});
         LongURL.known_services['apne.ws'] = eval({'domain':'apne.ws','regex':''});
         LongURL.known_services['bbc.in'] = eval({'domain':'bbc.in','regex':''});
+        LongURL.known_services['bcove.me'] = eval({'domain':'bcove.me','regex':''});
+        LongURL.known_services['coge.la'] = eval({'domain':'coge.la','regex':''});
+        LongURL.known_services['cptl.st'] = eval({'domain':'cptl.st','regex':''});
+        LongURL.known_services['deadsp.in'] = eval({'domain':'deadsp.in','regex':''});
         LongURL.known_services['digs.by'] = eval({'domain':'digs.by','regex':''});
         LongURL.known_services['eicker.at'] = eval({'domain':'eicker.at','regex':''});
         LongURL.known_services['es.pn'] = eval({'domain':'es.pn','regex':''});
         LongURL.known_services['ex-c.it'] = eval({'domain':'ex-c.it','regex':''});
+        LongURL.known_services['exm.nr'] = eval({'domain':'exm.nr','regex':''});
         LongURL.known_services['fk.cm'] = eval({'domain':'fk.cm','regex':''});
+        LongURL.known_services['fxn.ws'] = eval({'domain':'fxn.ws','regex':''});
+        LongURL.known_services['fyad.org'] = eval({'domain':'fyad.org','regex':''});
         LongURL.known_services['gr.pn'] = eval({'domain':'gr.pn','regex':''});
         LongURL.known_services['grpn.eu'] = eval({'domain':'grpn.eu','regex':''});
         LongURL.known_services['gu.com'] = eval({'domain':'gu.com','regex':''});
@@ -387,10 +398,13 @@ function requestServices()
         LongURL.known_services['mmflint.me'] = eval({'domain':'mmflint.me','regex':''});
         LongURL.known_services['on.msnbc.com'] = eval({'domain':'on.msnbc.com','regex':''});
         LongURL.known_services['p2.to'] = eval({'domain':'p2.to','regex':''});
+        LongURL.known_services['path.to'] = eval({'domain':'path.to','regex':''});
         LongURL.known_services['pitch.pe'] = eval({'domain':'pitch.pe','regex':''});
         LongURL.known_services['reut.rs'] = eval({'domain':'reut.rs','regex':''});
         LongURL.known_services['rww.to'] = eval({'domain':'rww.to','regex':''});
+        LongURL.known_services['s.meulie.net'] = eval({'domain':'s.meulie.net','regex':''});
         LongURL.known_services['scr.bi'] = eval({'domain':'scr.bi','regex':''});
+        LongURL.known_services['selnd.com'] = eval({'domain':'selnd.com','regex':''});
         LongURL.known_services['slate.me'] = eval({'domain':'slate.me','regex':''});
         LongURL.known_services['socuteurl.com'] = eval({'domain':'socuteurl.com','regex':''});
         LongURL.known_services['spn.tw'] = eval({'domain':'spn.tw','regex':''});
