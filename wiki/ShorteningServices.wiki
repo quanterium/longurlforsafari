@@ -9,14 +9,42 @@ LongURL.org supports virtually all URL shortening services. There is a [http://l
 
 When Safari starts, the extension retrieves the current list of supported services from LongURL.org.  The extension adds the following services. Note that this list can change over time as services are added to the LongURL.org list.
 
+ * abcn.ws
  * amzn.com
+ * aol.it
+ * apne.ws
  * bbc.in
+ * bcove.me
+ * coge.la
+ * deadsp.in
+ * digs.by
+ * eicker.at
+ * es.pn
  * ex-c.it
+ * exm.nr
  * fk.cm
+ * fxn.ws
+ * fyad.org
+ * gr.pn
+ * grpn.eu
  * gu.com
  * kpbs.us
+ * mmflint.me
+ * on.msnbc.com
+ * p2.to
+ * path.to
+ * pitch.pe
+ * reut.rs
+ * rww.to
+ * s.meulie.net
+ * scr.bi
+ * selnd.com
+ * slate.me
  * socuteurl.com
  * spn.tw
  * spr.ly
+ * to.pbs.org
+ * un.cr
+ * veh.cl
 
 If you find a shortening service that doesn't work with the extension, our first suggestion is to notify LongURL.org so that the service can be added and will then be supported by the extension automatically. You can also create and Issue in the issue tracker to have it added to the extension directly.
