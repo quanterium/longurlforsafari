@@ -78,6 +78,11 @@ TODO:
 
 ------------------
 CHANGELOG:
+1.3:
+- Changed additional services list to be obtained from the extension web site rather
+  than having it built in, so changes can be made without requiring an extension upgrade
+- Removed some debugging log messages
+
 1.2.3:
 - Additions to additional services list
 
@@ -301,7 +306,6 @@ function rebuildBlacklist() {
 	var str = safari.extension.settings.getItem("blacklist");
 	var sites = str.split(/ *, */);
 	
-	console.log("script blacklist: " + sites);
 	document.blacklistRE = sites;
 }
 
@@ -316,15 +320,11 @@ function getBlacklistRE() {
 // Returns true if the URL is allowed to load.
 function allowedToLoad(msgEvent) {
   var blacklistRE = getBlacklistRE();
-  console.log(blacklistRE);
-  console.log(msgEvent.message + ': ' + blacklistRE.indexOf(msgEvent.message));
   if (blacklistRE.indexOf(msgEvent.message) != -1) {
-    console.log(msgEvent.message + ': false');
     msgEvent.target.page.dispatchMessage('blacklistResult', 'block');
   }
   else
   {
-    console.log(msgEvent.message + ': true');
     msgEvent.target.page.dispatchMessage('blacklistResult', 'allow');
   }
 }
@@ -360,10 +360,7 @@ function readSettings(msgEvent)
 
 // Get the list of supported services from LongURL
 function requestServices()
-{
-  var apiurl = 'http://api.longurl.org/v2/services?';
-  var request = 'format=json';
-  
+{  
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(data)
   {
@@ -373,45 +370,26 @@ function requestServices()
       {  
         LongURL.known_services = JSON.parse(xhr.responseText);
         
-        // Add some additional services that LongURL supports but doesn't have on their list yet
-        LongURL.known_services['abcn.ws'] = eval({'domain':'abcn.ws','regex':''});
-        LongURL.known_services['amzn.com'] = eval({'domain':'amzn.com','regex':''});
-        LongURL.known_services['aol.it'] = eval({'domain':'aol.it','regex':''});
-        LongURL.known_services['apne.ws'] = eval({'domain':'apne.ws','regex':''});
-        LongURL.known_services['bbc.in'] = eval({'domain':'bbc.in','regex':''});
-        LongURL.known_services['bcove.me'] = eval({'domain':'bcove.me','regex':''});
-        LongURL.known_services['coge.la'] = eval({'domain':'coge.la','regex':''});
-        LongURL.known_services['cptl.st'] = eval({'domain':'cptl.st','regex':''});
-        LongURL.known_services['deadsp.in'] = eval({'domain':'deadsp.in','regex':''});
-        LongURL.known_services['digs.by'] = eval({'domain':'digs.by','regex':''});
-        LongURL.known_services['eicker.at'] = eval({'domain':'eicker.at','regex':''});
-        LongURL.known_services['es.pn'] = eval({'domain':'es.pn','regex':''});
-        LongURL.known_services['ex-c.it'] = eval({'domain':'ex-c.it','regex':''});
-        LongURL.known_services['exm.nr'] = eval({'domain':'exm.nr','regex':''});
-        LongURL.known_services['fk.cm'] = eval({'domain':'fk.cm','regex':''});
-        LongURL.known_services['fxn.ws'] = eval({'domain':'fxn.ws','regex':''});
-        LongURL.known_services['fyad.org'] = eval({'domain':'fyad.org','regex':''});
-        LongURL.known_services['gr.pn'] = eval({'domain':'gr.pn','regex':''});
-        LongURL.known_services['grpn.eu'] = eval({'domain':'grpn.eu','regex':''});
-        LongURL.known_services['gu.com'] = eval({'domain':'gu.com','regex':''});
-        LongURL.known_services['kpbs.us'] = eval({'domain':'kpbs.us','regex':''});
-        LongURL.known_services['mmflint.me'] = eval({'domain':'mmflint.me','regex':''});
-        LongURL.known_services['on.msnbc.com'] = eval({'domain':'on.msnbc.com','regex':''});
-        LongURL.known_services['p2.to'] = eval({'domain':'p2.to','regex':''});
-        LongURL.known_services['path.to'] = eval({'domain':'path.to','regex':''});
-        LongURL.known_services['pitch.pe'] = eval({'domain':'pitch.pe','regex':''});
-        LongURL.known_services['reut.rs'] = eval({'domain':'reut.rs','regex':''});
-        LongURL.known_services['rww.to'] = eval({'domain':'rww.to','regex':''});
-        LongURL.known_services['s.meulie.net'] = eval({'domain':'s.meulie.net','regex':''});
-        LongURL.known_services['scr.bi'] = eval({'domain':'scr.bi','regex':''});
-        LongURL.known_services['selnd.com'] = eval({'domain':'selnd.com','regex':''});
-        LongURL.known_services['slate.me'] = eval({'domain':'slate.me','regex':''});
-        LongURL.known_services['socuteurl.com'] = eval({'domain':'socuteurl.com','regex':''});
-        LongURL.known_services['spn.tw'] = eval({'domain':'spn.tw','regex':''});
-        LongURL.known_services['spr.ly'] = eval({'domain':'spr.ly','regex':''});
-        LongURL.known_services['to.pbs.org'] = eval({'domain':'to.pbs.org','regex':''});
-        LongURL.known_services['un.cr'] = eval({'domain':'un.cr','regex':''});
-        LongURL.known_services['veh.cl'] = eval({'domain':'veh.cl','regex':''});
+        // Now retreive the additional services from the extension website
+        var xhr1 = new XMLHttpRequest();
+        xhr1.onreadystatechange = function(data)
+        {
+          if(xhr1.readyState == 4)
+          {
+            if(xhr1.status == 200)
+            {
+              var newlist = JSON.stringify(LongURL.known_services) + xhr1.responseText;
+              newlist = newlist.replace(/\}\{/, ",");
+              LongURL.known_services = JSON.parse(newlist);
+            }
+            else
+            {
+              console.log(LongURL.options.logHeader + '[ERROR] xhr1.status='+xhr1.status);
+            }
+          }
+        }
+        xhr1.open('GET', 'http://longurlforsafari.googlecode.com/svn/release/extra_services.json.txt');
+        xhr1.send();
       }
       else
       {
@@ -419,7 +397,7 @@ function requestServices()
       }
     }
   }
-  xhr.open('GET', apiurl + request, true);
+  xhr.open('GET', 'http://api.longurl.org/v2/services?format=json', true);
   xhr.send();
 }
 
