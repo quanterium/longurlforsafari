@@ -23,7 +23,7 @@ SERVICES = ['abcn.ws',
             'coge.la',
             'cptl.st',
             'deadsp.in',
-            'dft.ba'
+            'dft.ba',
             'digs.by',
             'dis.tl',
             'eicker.at',
