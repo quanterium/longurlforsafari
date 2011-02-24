@@ -10,41 +10,76 @@ LongURL.org supports virtually all URL shortening services. There is a [http://l
 When Safari starts, the extension retrieves the current list of supported services from LongURL.org.  The extension adds the following services. Note that this list can change over time as services are added to the LongURL.org list.
 
  * abcn.ws
+ * aje.me
  * amzn.com
  * aol.it
  * apne.ws
+ * awe.sm
  * bbc.in
  * bcove.me
+ * blkatl.as
+ * bzfd.it
+ * cnt.to
+ * cog.gd
  * coge.la
+ * cptl.st
  * deadsp.in
+ * dft.ba
  * digs.by
+ * dis.tl
  * eicker.at
+ * engt.co
  * es.pn
  * ex-c.it
+ * exci.to
  * exm.nr
  * fk.cm
+ * frypi.cc
  * fxn.ws
  * fyad.org
+ * fyre.it
  * gr.pn
  * grpn.eu
  * gu.com
+ * hawna.ir
+ * hnl.me
+ * inv.lv
+ * itun.es
+ * journ.us
  * kpbs.us
+ * lifehac.kr
+ * lsnlw.com
+ * me.lt
  * mmflint.me
+ * newwp.it
+ * ning.it
+ * on.mash.to
  * on.msnbc.com
+ * on.natgeo.com
+ * on.wsj.com
  * p2.to
  * path.to
+ * pep.si
+ * ping.fm
  * pitch.pe
+ * qr.ae
+ * reg.cx
  * reut.rs
  * rww.to
+ * ry.ly
  * s.meulie.net
  * scr.bi
  * selnd.com
+ * shorten.ws
  * slate.me
  * socuteurl.com
  * spn.tw
  * spr.ly
+ * ti.me
  * to.pbs.org
  * un.cr
+ * url4t.com
  * veh.cl
+ * wrd.tw
 
 If you find a shortening service that doesn't work with the extension, our first suggestion is to notify LongURL.org so that the service can be added and will then be supported by the extension automatically. You can also create and Issue in the issue tracker to have it added to the extension directly.
