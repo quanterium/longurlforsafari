@@ -19,6 +19,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * bcove.me
  * blkatl.as
  * bzfd.it
+ * clrlv.rs
  * cnt.to
  * cog.gd
  * coge.la
