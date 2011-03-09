@@ -19,6 +19,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * bbc.in
  * bcove.me
  * blkatl.as
+ * bloom.bg
  * bzfd.it
  * clrlv.rs
  * cnt.to
@@ -74,6 +75,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * s.meulie.net
  * scr.bi
  * selnd.com
+ * sfg.ly
  * shorten.ws
  * slate.me
  * socuteurl.com
@@ -81,6 +83,8 @@ When Safari starts, the extension retrieves the current list of supported servic
  * spr.ly
  * ti.me
  * to.pbs.org
+ * twe.ly
+ * u.bzz.com
  * un.cr
  * url4t.com
  * veh.cl
