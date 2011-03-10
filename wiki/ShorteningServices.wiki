@@ -69,6 +69,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * pitch.pe
  * pulsene.ws
  * qr.ae
+ * redd.it
  * reg.cx
  * reut.rs
  * rww.to
