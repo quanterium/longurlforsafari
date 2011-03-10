@@ -46,6 +46,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * gu.com
  * hawna.ir
  * hnl.me
+ * ht.ly
  * inv.lv
  * itun.es
  * journ.us
@@ -83,6 +84,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * spr.ly
  * ti.me
  * to.pbs.org
+ * tvly.com
  * twe.ly
  * u.bzz.com
  * un.cr
