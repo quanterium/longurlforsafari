@@ -33,7 +33,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os
 
-SERVICES = ['abcn.ws',
+SERVICES = ['1.usa.gov',
+            'abcn.ws',
             'aje.me',
             'amzn.com',
             'aol.it',

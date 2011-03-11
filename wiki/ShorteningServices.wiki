@@ -9,6 +9,7 @@ LongURL.org supports virtually all URL shortening services. There is a [http://l
 
 When Safari starts, the extension retrieves the current list of supported services from LongURL.org.  The extension adds the following services. Note that this list can change over time as services are added to the LongURL.org list.
 
+ * 1.usa.gov
  * abcn.ws
  * aje.me
  * amzn.com
