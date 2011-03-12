@@ -42,6 +42,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * fxn.ws
  * fyad.org
  * fyre.it
+ * go-att.us
  * gr.pn
  * grpn.eu
  * gu.com
@@ -81,6 +82,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * sfg.ly
  * shorten.ws
  * slate.me
+ * sns.ly
  * socuteurl.com
  * spn.tw
  * spr.ly
@@ -92,6 +94,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * un.cr
  * url4t.com
  * veh.cl
+ * vosd.org
  * wrd.tw
 
 If you find a shortening service that doesn't work with the extension, our first suggestion is to notify LongURL.org so that the service can be added and will then be supported by the extension automatically. You can also create and Issue in the issue tracker to have it added to the extension directly.
