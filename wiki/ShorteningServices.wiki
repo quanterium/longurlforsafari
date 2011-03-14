@@ -29,6 +29,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * cptl.st
  * deadsp.in
  * dft.ba
+ * dhurl.org
  * digs.by
  * dis.tl
  * eicker.at
