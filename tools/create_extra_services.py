@@ -35,6 +35,7 @@ import os
 
 SERVICES = ['1.usa.gov',
             'abcn.ws',
+            'aexp.co',
             'aje.me',
             'amzn.com',
             'aol.it',

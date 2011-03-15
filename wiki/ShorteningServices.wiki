@@ -11,6 +11,7 @@ When Safari starts, the extension retrieves the current list of supported servic
 
  * 1.usa.gov
  * abcn.ws
+ * aexp.co
  * aje.me
  * amzn.com
  * aol.it
