@@ -61,6 +61,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * lsnlw.com
  * mbist.ro
  * me.lt
+ * mm4a.org
  * mmflint.me
  * newwp.it
  * ning.it
