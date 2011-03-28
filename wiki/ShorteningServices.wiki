@@ -84,6 +84,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * rww.to
  * ry.ly
  * s.meulie.net
+ * sbne.ws
  * scr.bi
  * selnd.com
  * sfg.ly
