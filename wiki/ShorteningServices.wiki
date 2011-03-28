@@ -64,6 +64,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * me.lt
  * mm4a.org
  * mmflint.me
+ * nerdi.st
  * newwp.it
  * ning.it
  * on.mash.to
@@ -95,6 +96,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * ti.me
  * to.pbs.org
  * tvly.com
+ * tw.itunes.com
  * twe.ly
  * u.bzz.com
  * un.cr
