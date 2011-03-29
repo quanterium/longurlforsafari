@@ -54,6 +54,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * hawna.ir
  * hnl.me
  * ht.ly
+ * icont.ac
  * inv.lv
  * itun.es
  * journ.us
