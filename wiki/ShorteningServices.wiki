@@ -98,6 +98,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * spr.ly
  * ti.me
  * to.pbs.org
+ * tox.cx
  * tvly.com
  * tw.itunes.com
  * twe.ly
