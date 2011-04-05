@@ -16,6 +16,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * amzn.com
  * aol.it
  * apne.ws
+ * atlmb.com
  * avc.lu
  * awe.sm
  * bbc.in
@@ -37,6 +38,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * dis.tl
  * eicker.at
  * engt.co
+ * eonli.ne
  * es.pn
  * ex-c.it
  * exci.to
