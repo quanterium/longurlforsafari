@@ -98,6 +98,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * socuteurl.com
  * spn.tw
  * spr.ly
+ * theatln.tc
  * ti.me
  * to.pbs.org
  * tox.cx
