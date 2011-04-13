@@ -14,6 +14,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * aexp.co
  * aje.me
  * amzn.com
+ * ana.ms
  * aol.it
  * apne.ws
  * atlmb.com
