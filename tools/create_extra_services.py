@@ -140,7 +140,8 @@ SERVICES = ['1.usa.gov',
             'url4t.com',
             'veh.cl',
             'vosd.org',
-            'wrd.tw'
+            'wrd.tw',
+            'yowz.at'
            ]
 
 OUTPUT_FILE = os.path.abspath(os.path.join('..', 'release', 'extra_services.json.txt'))
