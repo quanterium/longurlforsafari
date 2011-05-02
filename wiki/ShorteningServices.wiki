@@ -84,6 +84,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * pep.si
  * ping.fm
  * pitch.pe
+ * prn.to
  * pulsene.ws
  * qr.ae
  * red.ht
