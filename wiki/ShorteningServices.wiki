@@ -25,6 +25,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * blkatl.as
  * bloom.bg
  * bo.st
+ * buswk.co
  * bzfd.it
  * clic.gs
  * clrlv.rs
