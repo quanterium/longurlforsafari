@@ -63,6 +63,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * ht.ly
  * icont.ac
  * inv.lv
+ * itsh.bo
  * itun.es
  * journ.us
  * kpbs.us
