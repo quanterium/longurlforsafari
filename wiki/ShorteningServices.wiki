@@ -100,6 +100,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * ry.ly
  * s.meulie.net
  * sbne.ws
+ * sch.mp
  * scr.bi
  * selnd.com
  * sfg.ly
