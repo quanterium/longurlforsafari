@@ -79,6 +79,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * newwp.it
  * ning.it
  * ofa.bo
+ * on.kayak.com
  * on.mash.to
  * on.msnbc.com
  * on.natgeo.com
