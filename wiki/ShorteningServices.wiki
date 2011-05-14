@@ -112,6 +112,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * spr.ly
  * svy.mk
  * theatln.tc
+ * thesent.nl
  * ti.me
  * to.pbs.org
  * tox.cx
