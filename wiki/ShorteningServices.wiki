@@ -84,6 +84,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * on.msnbc.com
  * on.natgeo.com
  * on.wsj.com
+ * on-msn.com
  * p2.to
  * path.to
  * pep.si
