@@ -102,6 +102,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * sbne.ws
  * sch.mp
  * scr.bi
+ * seati.ms
  * selnd.com
  * sfg.ly
  * shorten.ws
