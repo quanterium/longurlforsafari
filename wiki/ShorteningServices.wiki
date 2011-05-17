@@ -49,6 +49,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * ex-c.it
  * exci.to
  * exm.nr
+ * fandan.co
  * fk.cm
  * frypi.cc
  * fxn.ws
