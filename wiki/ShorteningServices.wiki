@@ -80,6 +80,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * nerdi.st
  * newwp.it
  * ning.it
+ * nmsk.co
  * ofa.bo
  * on.kayak.com
  * on.mash.to
