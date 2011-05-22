@@ -83,6 +83,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * nmsk.co
  * nyr.kr
  * ofa.bo
+ * on.doi.gov
  * on.kayak.com
  * on.mash.to
  * on.msnbc.com
