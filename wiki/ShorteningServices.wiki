@@ -21,6 +21,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * avc.lu
  * avwk.us
  * awe.sm
+ * b0x.ee
  * bbc.in
  * bcove.me
  * blkatl.as
