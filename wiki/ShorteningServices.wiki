@@ -121,6 +121,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * socuteurl.com
  * spn.tw
  * spr.ly
+ * srtu.in
  * svy.mk
  * theatln.tc
  * thesent.nl
