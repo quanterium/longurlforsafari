@@ -71,6 +71,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * itun.es
  * journ.us
  * kpbs.us
+ * l.pr
  * lifehac.kr
  * lil.as
  * lsnlw.com
