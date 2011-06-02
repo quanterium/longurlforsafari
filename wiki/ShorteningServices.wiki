@@ -80,6 +80,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * mm4a.org
  * mmflint.me
  * mykl.co
+ * n9n.us
  * nerdi.st
  * newwp.it
  * ning.it
