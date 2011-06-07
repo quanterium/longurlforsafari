@@ -10,6 +10,7 @@ LongURL.org supports virtually all URL shortening services. There is a [http://l
 When Safari starts, the extension retrieves the current list of supported services from LongURL.org.  The extension adds the following services. Note that this list can change over time as services are added to the LongURL.org list.
 
  * 1.usa.gov
+ * aarp.us
  * abcn.ws
  * aexp.co
  * aje.me
@@ -102,6 +103,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * ping.fm
  * pitch.pe
  * prn.to
+ * pulp.ly
  * pulsene.ws
  * qr.ae
  * red.ht
@@ -128,6 +130,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * theatln.tc
  * thesent.nl
  * ti.me
+ * tnw.co
  * to.pbs.org
  * tox.cx
  * tvly.com
