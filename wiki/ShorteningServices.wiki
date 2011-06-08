@@ -86,6 +86,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * newwp.it
  * ning.it
  * nmsk.co
+ * nydn.us
  * nyr.kr
  * ofa.bo
  * on.cc.com
