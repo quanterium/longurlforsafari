@@ -62,6 +62,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * gofly.us
  * gr.pn
  * grpn.eu
+ * gtcha.me
  * gu.com
  * hawna.ir
  * hnl.me
