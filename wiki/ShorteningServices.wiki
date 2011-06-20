@@ -111,6 +111,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * pulsene.ws
  * qr.ae
  * qurl.com
+ * re.pn
  * red.ht
  * redd.it
  * reg.cx
