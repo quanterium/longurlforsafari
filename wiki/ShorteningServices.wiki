@@ -53,6 +53,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * exm.nr
  * fandan.co
  * fk.cm
+ * flpbd.it
  * frypi.cc
  * fxn.ws
  * fyad.org
@@ -128,6 +129,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * shorten.ws
  * slate.me
  * sns.ly
+ * sns.mx
  * socuteurl.com
  * spn.tw
  * spr.ly
