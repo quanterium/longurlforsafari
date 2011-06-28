@@ -66,6 +66,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * gtcha.me
  * gu.com
  * hawna.ir
+ * hip.mu
  * hnl.me
  * ht.ly
  * icont.ac
