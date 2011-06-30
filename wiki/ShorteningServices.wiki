@@ -74,6 +74,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * itsh.bo
  * itun.es
  * journ.us
+ * krz.ch
  * kpbs.us
  * l.pr
  * lifehac.kr
@@ -113,6 +114,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * pulsene.ws
  * qr.ae
  * qurl.com
+ * rca.st
  * re.pn
  * red.ht
  * redd.it
