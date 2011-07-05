@@ -34,6 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import os
 
 SERVICES = ['1.usa.gov',
+            '1click.at',
             'aarp.us',
             'abcn.ws',
             'aexp.co',
