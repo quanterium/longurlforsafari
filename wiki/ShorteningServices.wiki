@@ -62,6 +62,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * go.nasa.gov
  * go-att.us
  * gofly.us
+ * gplus.to
  * gr.pn
  * grpn.eu
  * gtcha.me
