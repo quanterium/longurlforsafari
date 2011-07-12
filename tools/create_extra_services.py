@@ -181,6 +181,7 @@ SERVICES = ['1.usa.gov',
             'url4t.com',
             'veh.cl',
             'vosd.org',
+            'wcti.us',
             'wrd.tw',
             'yowz.at',
             'zite.to'

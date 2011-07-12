@@ -157,6 +157,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * url4t.com
  * veh.cl
  * vosd.org
+ * wcti.us
  * wrd.tw
  * yowz.at
  * zite.to
