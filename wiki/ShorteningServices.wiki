@@ -158,6 +158,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * veh.cl
  * vosd.org
  * wcti.us
+ * wpo.st
  * wrd.tw
  * yowz.at
  * zite.to

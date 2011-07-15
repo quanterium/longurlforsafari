@@ -182,6 +182,7 @@ SERVICES = ['1.usa.gov',
             'veh.cl',
             'vosd.org',
             'wcti.us',
+            'wpo.st',
             'wrd.tw',
             'yowz.at',
             'zite.to'
