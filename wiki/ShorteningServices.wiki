@@ -137,6 +137,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * slate.me
  * sns.ly
  * sns.mx
+ * soc.li
  * socuteurl.com
  * spn.tw
  * spr.ly
