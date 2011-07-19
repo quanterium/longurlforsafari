@@ -186,6 +186,7 @@ SERVICES = ['1.usa.gov',
             'wcti.us',
             'wpo.st',
             'wrd.tw',
+            'x2q.us',
             'yowz.at',
             'zite.to'
            ]

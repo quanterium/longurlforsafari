@@ -162,6 +162,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * wcti.us
  * wpo.st
  * wrd.tw
+ * x2q.us
  * yowz.at
  * zite.to
 
