@@ -87,6 +87,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * mbist.ro
  * me.lt
  * meme.ms
+ * mil-com.me
  * mktplc.org
  * mm4a.org
  * mmflint.me
@@ -133,7 +134,9 @@ When Safari starts, the extension retrieves the current list of supported servic
  * seati.ms
  * selnd.com
  * sfg.ly
+ * sgp.cm
  * shorten.ws
+ * skygrid.me
  * slate.me
  * sns.ly
  * sns.mx
@@ -148,6 +151,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * thesent.nl
  * ti.me
  * tnw.co
+ * tnw.to
  * to.pbs.org
  * tox.cx
  * tvly.com
