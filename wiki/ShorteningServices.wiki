@@ -102,6 +102,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * nyr.kr
  * ofa.bo
  * on.cc.com
+ * on.cclol.com
  * on.doi.gov
  * on.kayak.com
  * on.mash.to
