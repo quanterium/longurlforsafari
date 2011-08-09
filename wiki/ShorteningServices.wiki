@@ -45,6 +45,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * dhurl.org
  * digs.by
  * dis.tl
+ * econ.st
  * eicker.at
  * engt.co
  * eonli.ne
@@ -64,6 +65,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * go.nasa.gov
  * go-att.us
  * gofly.us
+ * goto.to
  * gplus.to
  * gqm.ag
  * gr.pn
@@ -147,6 +149,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * spn.tw
  * spr.ly
  * srtu.in
+ * stk.ly
  * svy.mk
  * tgr.ph
  * theatln.tc
