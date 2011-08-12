@@ -94,6 +94,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * mktplc.org
  * mm4a.org
  * mmflint.me
+ * movi.ps
  * mykl.co
  * n9n.us
  * nerdi.st
