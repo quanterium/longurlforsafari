@@ -114,6 +114,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * on.wsj.com
  * on-msn.com
  * onforb.es
+ * owl.li
  * p2.to
  * path.to
  * pep.si
@@ -143,6 +144,8 @@ When Safari starts, the extension retrieves the current list of supported servic
  * shorten.ws
  * skygrid.me
  * slate.me
+ * smarturl.it
+ * smf.is
  * sns.ly
  * sns.mx
  * soc.li
@@ -169,6 +172,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * urbns.pn
  * url4t.com
  * veh.cl
+ * virg.co
  * vosd.org
  * wcti.us
  * wpo.st
