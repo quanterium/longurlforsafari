@@ -32,6 +32,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * bo.st
  * buswk.co
  * bzfd.it
+ * chn.ge
  * clic.gs
  * clrlv.rs
  * cnet.co
@@ -49,6 +50,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * eicker.at
  * engt.co
  * eonli.ne
+ * epi.us
  * ericri.es
  * es.pn
  * ex-c.it
@@ -86,6 +88,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * l.pr
  * lifehac.kr
  * lil.as
+ * lnk.nu
  * lsnlw.com
  * mbist.ro
  * me.lt
@@ -97,6 +100,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * movi.ps
  * mykl.co
  * n9n.us
+ * nctim.es
  * nerdi.st
  * newwp.it
  * ning.it
@@ -158,6 +162,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * tgr.ph
  * theatln.tc
  * thesent.nl
+ * thkpr.gs
  * ti.me
  * tnw.co
  * tnw.to
