@@ -50,6 +50,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * eicker.at
  * engt.co
  * eonli.ne
+ * epho.st
  * epi.us
  * ericri.es
  * es.pn
