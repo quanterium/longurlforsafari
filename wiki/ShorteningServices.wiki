@@ -93,6 +93,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * lnk.nu
  * lsnlw.com
  * mbist.ro
+ * mcaf.ee
  * me.lt
  * meme.ms
  * mil-com.me
