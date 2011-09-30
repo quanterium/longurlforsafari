@@ -46,6 +46,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * dhurl.org
  * digs.by
  * dis.tl
+ * dthin.gs
  * econ.st
  * eicker.at
  * engt.co
