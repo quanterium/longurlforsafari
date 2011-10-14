@@ -28,6 +28,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * b0x.ee
  * bbc.in
  * bcove.me
+ * bddy.me
  * blkatl.as
  * bloom.bg
  * bo.st
