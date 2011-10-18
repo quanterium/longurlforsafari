@@ -46,6 +46,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * deadsp.in
  * dft.ba
  * dhurl.org
+ * di.sn
  * digs.by
  * dis.tl
  * dthin.gs
@@ -98,6 +99,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * macw.us
  * mbist.ro
  * mcaf.ee
+ * mcch.at
  * me.lt
  * meme.ms
  * mil-com.me
@@ -186,6 +188,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * veh.cl
  * virg.co
  * vosd.org
+ * wandr.me
  * wcti.us
  * wpo.st
  * wrd.tw
