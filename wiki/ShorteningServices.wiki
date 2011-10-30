@@ -41,6 +41,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * cnt.to
  * cog.gd
  * coge.la
+ * cour.at
  * cptl.st
  * db.tt
  * deadsp.in
