@@ -121,6 +121,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * on.cc.com
  * on.cclol.com
  * on.doi.gov
+ * on.ft.com
  * on.kayak.com
  * on.mash.to
  * on.msnbc.com
