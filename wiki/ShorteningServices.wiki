@@ -69,6 +69,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * fxn.ws
  * fyad.org
  * fyre.it
+ * g.co
  * gi.lt
  * global-en.co
  * go.nasa.gov
