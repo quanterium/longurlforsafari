@@ -91,6 +91,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * inv.lv
  * itsh.bo
  * itun.es
+ * iuo8.tk
  * journ.us
  * krz.ch
  * kpbs.us
