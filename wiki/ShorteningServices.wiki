@@ -173,6 +173,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * srtu.in
  * stk.ly
  * svy.mk
+ * tgo.co
  * tgr.ph
  * theatln.tc
  * thesent.nl
