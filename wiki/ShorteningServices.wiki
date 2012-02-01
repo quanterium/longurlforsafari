@@ -24,6 +24,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * avc.lu
  * avwk.us
  * awe.sm
+ * b.qr.ae
  * b-gat.es
  * b0x.ee
  * bbc.in
@@ -156,6 +157,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * sch.mp
  * scr.bi
  * seati.ms
+ * see.sc
  * selnd.com
  * sfg.ly
  * sgp.cm
