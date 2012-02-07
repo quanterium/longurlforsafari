@@ -197,6 +197,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * veh.cl
  * virg.co
  * vosd.org
+ * vwoa.us
  * wandr.me
  * wcti.us
  * wpo.st
