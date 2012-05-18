@@ -86,6 +86,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * gu.com
  * hawna.ir
  * hip.mu
+ * hive.rs
  * hnl.me
  * ht.ly
  * icont.ac
