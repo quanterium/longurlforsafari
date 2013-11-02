@@ -33,6 +33,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * blkatl.as
  * bloom.bg
  * bo.st
+ * buff.ly
  * buswk.co
  * bzfd.it
  * chn.ge
@@ -199,6 +200,7 @@ When Safari starts, the extension retrieves the current list of supported servic
  * virg.co
  * vosd.org
  * vwoa.us
+ * w.ly
  * wandr.me
  * wcti.us
  * wpo.st
