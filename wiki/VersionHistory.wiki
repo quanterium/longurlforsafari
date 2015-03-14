@@ -1,0 +1,86 @@
+#summary Release history of this extension.
+
+= Introduction =
+
+This page provides a release history for the extension.
+
+
+= Safari Extension History =
+
+*1.3*: February 24, 2011 - Subversion r52
+ * Changed additional services list to be obtained from the extension web site rather than having it built in, so changes can be made without requiring an extension upgrade
+ * Removed some debugging log messages
+
+*1.2.3*: January 8, 2011 - Subversion r46
+ * Additions to additional services list
+
+*1.2.2*: November 15, 2010 - Subversion r43
+ * Additions to additional services list
+
+*1.2.1*: October 8, 2010 - Subversion r39
+ * Modifications to additional services list
+
+*1.2*: August 27, 2010 - Subversion r31
+ * Removed XPath check since Safari 5 supports it 
+ * Issue 2: Implement user-editable blacklist (based on !JavaScript Blacklist extension)
+ * Removed amazon.com, tripit.com, facebook.com, mail.com from internal blacklist
+ * Resolve performance issues by preventing the extension from running on embedded pages/frames
+ * Additions to additional services list
+
+*1.1.1*: July 21, 2010 - Subversion r24
+ * Issue 2: Added amazon.com to blocked sites
+ * Additions to additional services list
+
+*1.1*: July 13, 2010 - Subversion r15
+ * Issue 1: Added option to hide ShortURL in the tooltip
+ * Added an internal list of additional services that work but LongURL.org does not have on their list yet
+
+*1.0*: June 22, 2010 - Subversion r4
+ * Initial release.
+ * Based on Google Chrome 1.7 extension with additional changes:
+  * Reorganization needed to support differences between Chrome and Safari extension architectures
+  * Added ability to customize tooltip contents
+  * Load list of supported sites from LongURL.org when Safari starts
+
+
+= Google Chrome/Greasemonkey Script Extension History =
+
+*1.7*: (only for Google Chrome)
+ * Added localStorage to preserve settings when the browser is closed
+
+*1.6*: (only for Google Chrome)
+ * Chrome extension version
+ * zIndex & wordWrap style for tooltip
+ * Services list updated (235)
+
+*1.5*:
+ * Prevent memory leak, see http://ajaxian.com/archives/dynamic-script-generation-and-memory-leaks
+
+*1.4*:
+ * optimize showTooltip function -> 10x faster with ff \o/ (mouse over -> tooltip time to appear)
+ * remove processRequest & showTooltip useless parameter (json), using LongURL.storedRequests(url) instead
+ * added GM_xmlhttpRequest for FF users ; remove use of unsafeWindow :) ; use of JSON.parse if supported
+ * added try-catch block
+
+ * Still don't understand why it's not working with 'Twitter Sidebar Replies', processRequest is called, and modify DOM ! But no repercusion on the screen, W.T.F. ?
+ * tweetbe.at is working with Opera, not with Firefox, why ? +really slow with FF
+
+*1.3*:
+ * added option storedRequests
+ * reduce number of requests by storing results
+ * Tried to make the script work with 'Twitter Sidebar Replies' userscript - http://userscripts.org/scripts/show/36635 -> Concerning !GreaseMonkey user only, because this script doesn't work with Opera. But somehow firefox refuse to create the network request after script injection : with firebug check html->head->scripts... Those scripts which stay indicate 'Failed to load source for'. Really weird = clic edit, add a character and remove it rapidly, clic edit(stop) -> ff load the script and execute it perfectly, url is replaced ! WTF ?! (first comment line 145 to avoid js error)
+
+*1.2*:
+ * added ajax support :) - Examples : 'more' button on twitter, tweetbe.at, twitter100.com, ...
+ * added option : showPopup
+ * added option : forceVisibleHref
+ * reduce 'Media type' font size in the tooltip
+ * exclude http://longurl.org/*
+ * exclude the userscript.org tutorial itself ^^
+
+*1.1*:
+ * added https support (concern only !GreaseMonkey users)
+ * reduce alpha transparency of the popup
+
+*1.0*:
+ * Initial release
