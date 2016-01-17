@@ -10,9 +10,9 @@
        <key>Developer Identifier</key>
        <string>9H26G396TH</string>
        <key>CFBundleVersion</key>
-       <string>9</string>
+       <string>10</string>
        <key>CFBundleShortVersionString</key>
-       <string>1.4</string>
+       <string>1.4.1</string>
        <key>URL</key>
        <string>https://github.com/quanterium/longurlforsafari/blob/master/release/LongURL%20for%20Safari.safariextz?raw=true</string>
      </dict>
