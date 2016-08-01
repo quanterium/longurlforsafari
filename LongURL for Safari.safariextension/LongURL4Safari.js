@@ -45,7 +45,7 @@ var tooltip =
     tooltip.content.setAttribute('id', 'LongURL_tooltip');
     tooltip.content.style.position = 'absolute';
     tooltip.content.style.textAlign = 'left';
-    tooltip.content.style.zIndex = '999';
+    tooltip.content.style.zIndex = '9999';
     tooltip.content.style.wordWrap = 'break-word';
     tooltip.content.style.display = 'none';
     tooltip.content.style.opacity = '0.9';
@@ -60,31 +60,31 @@ var tooltip =
   {
     var json = waitingItems[tinyurl].data;
     
-    var temp = '<b>LongURL:</b> <a href="' + json['long-url'] + '" style="font-size:15px">' + json['long-url'] + '</a><br />';
+    var temp = '<b>LongURL:</b> <a href="' + json['longUrl'] + '" style="font-size:15px">' + json['longUrl'] + '</a><br />';
     if(json['title'])
       temp += '<b>Title:</b> <span style="font-size:20px;color:#2200CC">'+json['title'] + '</span><br />';
     temp += '<br />';
     if(options.showShortUrl == 1)
       temp += '<b>ShortURL:</b> <span style="color:#008000">' + tinyurl + '</span><br />';
-    if(json['meta-description'])
-      temp += '<b>Description:</b> <span style="font-size:13px;color:#2200CC">'+json['meta-description'] + '</span><br />';
-    if(json['all-redirects'] || json['content-type'] || json['rel-canonical'] || json['meta-keywords'])
+    if(json['metaDescription'])
+      temp += '<b>Description:</b> <span style="font-size:13px;color:#2200CC">'+json['metaDescription'] + '</span><br />';
+    if(json['allRedirects'] || json['contentType'] || json['relCanonical'] || json['metaKeywords'])
       temp += '<br />';
-    if(json['all-redirects'])
+    if(json['allRedirects'])
     {
-      for(var m = 0; m < json['all-redirects'].length; m++)
+      for(var m = 0; m < json['allRedirects'].length; m++)
       {
-        temp += '<b>HTTP redirect:</b> <span style="color:#008000">' + json['all-redirects'][m] + '</span><br />';
+        temp += '<b>HTTP redirect:</b> <span style="color:#008000">' + json['allRedirects'][m] + '</span><br />';
       }
     }
-    if(json['content-type'])
-      temp += '<span style="font-size:9px;color:#2200CC"><b>Media type:</b> '+json['content-type'] + '</span><br />';
-    if(json['rel-canonical'] || json['meta-keywords'])
+    if(json['contentType'])
+      temp += '<span style="font-size:9px;color:#2200CC"><b>Media type:</b> '+json['contentType'] + '</span><br />';
+    if(json['relCanonical'] || json['metaKeywords'])
       temp += '<br />';
-    if(json['rel-canonical'])
-      temp += '<b>Canonical URL:</b> '+json['rel-canonical'] + '<br />';
-    if(json['meta-keywords'])
-      temp +='<b>Keywords:</b> '+json['meta-keywords'] + '<br />';
+    if(json['relCanonical'])
+      temp += '<b>Canonical URL:</b> '+json['relCanonical'] + '<br />';
+    if(json['metaKeywords'])
+      temp +='<b>Keywords:</b> '+json['metaKeywords'] + '<br />';
     // Not shown : response-code (always 200 here)
     
     tooltip.content.innerHTML = temp; // Only one .innerHTML  = good perf.
@@ -102,12 +102,12 @@ function processBlacklistResult(data)
   {
     // get the configuration options by sending a message to the global html page
     safari.self.tab.dispatchMessage('getOptions', null);
-    console.log('[LongUrl] [Allow] Domain "' + document.domain + '" not found on blacklist');
+    console.log(options.logHeader + ' [Allow] Domain "' + document.domain + '" not found on blacklist');
   }
   else
   {
     // if not allowed, nothing else will happen
-    console.log('[LongUrl] [Block] Domain "' + document.domain + '" matched blacklist with result: ' + data);
+    console.log(options.logHeader + ' [Block] Domain "' + document.domain + '" matched blacklist with result: ' + data);
   }
 }
 
@@ -265,7 +265,7 @@ function start()
   }
   catch(err)
   {
-    console.log(options.logHeader + '[ERROR] ' + err);
+    console.log(options.logHeader + ' [ERROR] ' + err);
   }
 };
 
@@ -297,16 +297,16 @@ function processHandler(backResponse)
   {
     if(typeof(a) != 'object') // asynchronous -> a could have been destroyed ; check if a is still here
     {
-      throw('Current element is not and object');
+      throw('Current element is not an object');
     }
     
     // Copy the data, first 'if' may change the value ^^
     var tinyurl = a.href;
     
-    if(options.replaceHref && json['long-url'])
+    if(options.replaceHref && json['longUrl'])
     {
       // Whatever the content of the link is, we change the href attribute
-      a.href = json['long-url'];
+      a.href = json['longUrl'];
     }
     
     if(options.replaceVisibleHref > 0)
@@ -315,8 +315,8 @@ function processHandler(backResponse)
       {
         if(options.replaceVisibleHref == 1 && json['title'])
           a.innerHTML = json['title'];
-        else if(json['long-url'])
-          a.innerHTML = json['long-url'];
+        else if(json['longUrl'])
+          a.innerHTML = json['longUrl'];
       }
     }
     
@@ -384,7 +384,7 @@ function processHandler(backResponse)
   }
   catch(err)
   {
-    console.log(options.logHeader + '[ERROR] ' + err);
+    console.log(options.logHeader + ' [ERROR] ' + err);
   }
 }
 
