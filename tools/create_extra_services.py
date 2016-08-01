@@ -578,11 +578,24 @@ SERVICES = ['›.ws',
            ]
 
 OUTPUT_FILE = os.path.abspath(os.path.join('..', 'release', 'extra_services.json.txt'))
+WIKI_FILE = os.path.abspath(os.path.join('..', '..', 'longurlforsafari.wiki', 'Shortening-Services.md'))
 
-str = '{'
+wiki_str = '''# Introduction
+
+To avoid having to check every link on a page, the extension retrieves a list of known domains of URL shortening services. This list is retrieved each time Safari is started, allowing the list to be updated without requiring a new version of the extension to be created.
+
+If you come across a domain being used for short URLs that isn't on this list, openen an issue in [the issue tracker](https://github.com/quanterium/longurlforsafari/issues) is the easiest way to have the domain added.
+
+# Supported Domains
+'''
+output_str = '{'
 for service in SERVICES:
-  str += '"%s":{"domain":"%s","regex":""},' % (service, service)
-str = str[:-1] + '}'
+  output_str += '"%s":{"domain":"%s","regex":""},' % (service, service)
+  wiki_str += ' * %s\n' % service
+output_str = output_str[:-1] + '}'
 out = open(OUTPUT_FILE, 'w')
-out.write(str)
+out.write(output_str)
+out.close()
+out = open(WIKI_FILE, 'w')
+out.write(wiki_str)
 out.close()
