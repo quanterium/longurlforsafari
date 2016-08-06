@@ -36,6 +36,9 @@ var waitingItems = {};
 var options = {};
 var known_services = {};
 
+// Store link objects for context menu
+var menu_items = Array();
+
 var tooltip = 
 {
   content: null, // tooltip div element
@@ -124,36 +127,34 @@ function setServices(data)
   start();
 }
 
+// Get data from global.html & process it
+function prepareRequest(a)
+{
+  if(waitingItems[a.href]) // Is this url already there in the same page?
+  {
+    if(waitingItems[a.href].data == null) // Is this url currently processed?
+    {
+      var t = waitingItems[a.href].WItems;
+      t[t.length] = a; // Add the link the the waitingItems list for future processing
+    }
+    else // Parse the link with the data previously stored
+    {
+      processHandler({'link': a.href, 'json':waitingItems[a.href].data});          
+    }
+    return; // don't even call global.html
+  }
+  
+  // Add to the queue
+  waitingItems[a.href] = {data: null, WItems: [a]};
+  
+  // Send a request to fetch data from the global html page.
+  safari.self.tab.dispatchMessage('getLink', a.href);
+}
+
 function start()
 {
   try
   {
-    // Get data from global.html & process it
-    var prepareRequest = function(a)
-    {
-      if(waitingItems[a.href]) // Is this url already there in the same page?
-      {
-        if(waitingItems[a.href].data == null) // Is this url currently processed?
-        {
-          var t = waitingItems[a.href].WItems;
-          t[t.length] = a; // Add the link the the waitingItems list for future processing
-        }
-        else // Parse the link with the data previously stored
-        {
-          processHandler({'link': a.href, 'json':waitingItems[a.href].data});          
-        }
-        return; // don't even call background.html
-      }
-      
-      // Add to the queue
-      waitingItems[a.href] = {data: null, WItems: [a]};
-      
-      // Send a request to fetch data from the global html page.
-      safari.self.tab.dispatchMessage('getLink', a.href);
-    }
-    
-    //------------------------------
-    
     // Will be called for every link in the page
     var checkLink = function(a)
     {
@@ -190,7 +191,7 @@ function start()
         }
       }
       
-      // Only process links from a different domain and links corresponding to a kwon url shortener service
+      // Only process links from a different domain and links corresponding to a known url shortener service
       if((domain !== document.location.host) && (typeof(known_services[domain]) !== 'undefined') && params)
       {
         var regex = new RegExp(known_services[domain]['regex'], 'i'); // Check link URL against domain regex
@@ -206,25 +207,28 @@ function start()
     // Listen for DOM modification (ajax request = potential shortened url)
     document.body.addEventListener('DOMNodeInserted', function(e)
     {
-      // If the node as aldready been processed, do nothing :    
-      if(e.target.id == 'LongURL_tooltip')
-        return;
-      
-      var lookForA = function(n)
+      if (options.autoExpand)
       {
-        if(n.nodeName == 'A') // Found a link item (that you can click, not a simple url in the text)
+        // If the node as aldready been processed, do nothing :    
+        if(e.target.id == 'LongURL_tooltip')
+          return;
+      
+        var lookForA = function(n)
         {
-          checkLink(n);
-        }
-        for(var i = 0; i < n.childNodes.length; i++)
-        {
-          if(n.childNodes[i].nodeType == 1) // ELEMENT_NODE
+          if(n.nodeName == 'A') // Found a link item (that you can click, not a simple url in the text)
           {
-            lookForA(n.childNodes[i]);
+            checkLink(n);
           }
-        }
-      };
-      lookForA(e.relatedNode); // Check children recursively, could slow down :-(
+          for(var i = 0; i < n.childNodes.length; i++)
+          {
+            if(n.childNodes[i].nodeType == 1) // ELEMENT_NODE
+            {
+              lookForA(n.childNodes[i]);
+            }
+          }
+        };
+        lookForA(e.relatedNode); // Check children recursively, could slow down :-(
+      }
     }, false);
     
     //------------------------------
@@ -257,10 +261,13 @@ function start()
     
     //------------------------------
     
-    var links = document.evaluate('//a[@href]', document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null); // XPath (faster)
-    for(var i = 0; i < links.snapshotLength; i++)
+    if (options.autoExpand)
     {
-      checkLink(links.snapshotItem(i));
+      var links = document.evaluate('//a[@href]', document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null); // XPath (faster)
+      for(var i = 0; i < links.snapshotLength; i++)
+      {
+        checkLink(links.snapshotItem(i));
+      }
     }
   }
   catch(err)
@@ -410,6 +417,10 @@ function handleMessage(msgEvent)
   {
     setServices(msgEvent.message);
   }
+  else if (msgEvent.name === 'expandurl')
+  {
+    prepareRequest(menu_items[msgEvent.message]);
+  }
 }
 
 if (window.top === window)
@@ -419,6 +430,29 @@ if (window.top === window)
   
   // find out if this domain is blocked by sending a message to the global html page
   safari.self.tab.dispatchMessage('checkBlacklist', window.top.document.domain);
+}
+
+// listener for context menu item
+document.addEventListener('contextmenu', handleContextMenu, false);
+
+function handleContextMenu(event)
+{
+  var target = event.target;
+  while (target != null && target.nodeType == Node.ELEMENT_NODE && target.nodeName.toLowerCase() != 'a')
+  {
+    target = target.parentNode;
+  }
+  if (target.nodeName.toLowerCase() == 'a')
+  {
+    next_index = menu_items.length;
+    menu_items[next_index] = target;
+    safari.self.tab.setContextMenuEventUserInfo(event, next_index);
+  }
+  else
+  {
+    // mouse isn't over a link, so signal that we want to disable our context menu item
+    safari.self.tab.setContextMenuEventUserInfo(event, 'no');
+  }
 }
 
 // ]]>

@@ -13,11 +13,22 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.1</string>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>12</string>
 	<key>Chrome</key>
 	<dict>
+		<key>Context Menu Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string></string>
+				<key>Identifier</key>
+				<string>expandurl</string>
+				<key>Title</key>
+				<string>Expand URL</string>
+			</dict>
+		</array>
 		<key>Global Page</key>
 		<string>global.html</string>
 	</dict>

@@ -50,6 +50,7 @@ var LongURL =
     replaceHref: true, // For security and rapidity, true is more than recommended ; Replace the link your browser will hit if you click the link
     replaceVisibleHref: 0, // 0: no, 1: title, 2: link ; default=1 as recommended by W3C : http://www.w3.org/TR/WCAG10-HTML-TECHS/#link-text ; http://www.w3.org/TR/WCAG20-HTML-TECHS/
     forceVisibleHref: false, // Force change of the link text even if it's not the target - Example: <a href="http://is.gd/w">Home page of Google</a>
+    autoExpand: true, // Automatically expand short URLs
     logHeader: '[LongURL]',
     
     // Tooltip content options
@@ -318,6 +319,7 @@ function readSettings(msgEvent)
   LongURL.options.showMetaKeywords = safari.extension.settings.getItem('showMetaKeywords');
   LongURL.options.showMetaDescription = safari.extension.settings.getItem('showMetaDescription');
   LongURL.options.showShortUrl = safari.extension.settings.getItem('showShortUrl');
+  LongURL.options.autoExpand = safari.extension.settings.getItem('autoExpand');
   if (msgEvent != null)
   {
     if ((msgEvent.key == 'showAllRedirects') || (msgEvent.key == 'showContentType') || (msgEvent.key == 'showTitle') || (msgEvent.key == 'showRelCananical') || (msgEvent.key == 'showMetaKeywords') || (msgEvent.key == 'showMetaDescription'))
@@ -383,8 +385,27 @@ function onRequest(msgEvent)
   }
 }
 
-// connect message listeners
+// validate whether or not the context menu item should be displayed
+function validateContextMenu(event)
+{
+  if (event.userInfo === 'no')
+  {
+    event.target.disabled = true;
+  }
+}
+
+// called when user selects our context menu item
+function handleContextMenu(event) {
+  if(event.command === 'expandurl')
+  {
+    safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('expandurl', event.userInfo);
+  }
+}
+
+// connect event listeners
 safari.application.addEventListener('message', onRequest, false);
+safari.application.addEventListener('validate', validateContextMenu, false);
+safari.application.addEventListener('command', handleContextMenu, false);
 safari.extension.settings.addEventListener('change', readSettings, false);
 
 // initialize settings when Safari first loads
