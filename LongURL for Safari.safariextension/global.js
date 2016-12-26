@@ -42,6 +42,36 @@ function ResultObject()
   this.responseCode = 200;
 }
 
+BAD_DOMAINS = ['routerlogin.net', 'routerlogin.com', /* Netgear configuration */
+               'tplinklogin.net', 'tplinkextender.net', /* Expired TP-LINK domains, see http://www.theregister.co.uk/2016/07/06/tplink_abandons_forgotten_router_config_domains/ */
+               'tplinkwifi.net', 'tplinkmodem.net', 'tplinkrepeater.net', 'tplinkplc.net' /* TP-LINK configuration */
+              ];
+
+// for security we don't want to process certain domains
+function safeDomain(link)
+{
+  // Get the link domain
+  // Careful, maybe the link doesn't begin with 'http://' or 'www' or both...
+  // This regex return false if the link is an anchor (href="#...") ; '#' won't match the pattern "[-\w]"
+  // This regex return false if the link execute javascript (href="javascript:...") ; ':' won't match the pattern "[-\w]"
+  // Nice js regex doc here : http://www.javascriptkit.com/jsref/regexp.shtml
+  // Also useful : http://www.regextester.com/
+  var regexResult = link.match(/^(?:https?:\/\/)?(?:www\.)?((?:[-\w]+\.)+[a-zA-Z]{2,})(\/.+)?/i);
+  var domain = false;
+  if(regexResult)
+  {
+    // domain[0] == a.href ; We just want the domain ; obtained with domain[1] for that regex
+    domain = regexResult[1];
+
+    if(BAD_DOMAINS.includes(domain))
+    {
+      console.log(LongURL.options.logHeader + ' Stopping resolution of unsafe domain ' + link);
+      return false;
+    }
+  }
+  return true;
+}
+
 var LongURL = 
 {
   options:
@@ -151,72 +181,75 @@ var LongURL =
   // Follow a link to find out the destination
   followURL: function(link, resultObject, i)
   {
-    resultObject.allRedirects.push(link);
-    resultObject.longUrl = link;
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(data)
+    if(safeDomain(link))
     {
-      if(xhr.readyState == 4)
+      resultObject.allRedirects.push(link);
+      resultObject.longUrl = link;
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(data)
       {
-        switch_block:
+        if(xhr.readyState == 4)
         {
-          switch(xhr.status)
+          switch_block:
           {
-            case 200:
-              // XMLHttpRequest automatically follows redirects so we'll actually always wind up
-              // here, but we'll leave the other cases in case we find another way to do this
-              // See http://stackoverflow.com/questions/228225/prevent-redirection-of-xmlhttprequest
-              var metas = xhr.response.getElementsByTagName('meta'); 
-              for (var z=0; z<metas.length; z++)
-              {
-                if (metas[z].getAttribute('http-equiv') == 'refresh')
+            switch(xhr.status)
+            {
+              case 200:
+                // XMLHttpRequest automatically follows redirects so we'll actually always wind up
+                // here, but we'll leave the other cases in case we find another way to do this
+                // See http://stackoverflow.com/questions/228225/prevent-redirection-of-xmlhttprequest
+                var metas = xhr.response.getElementsByTagName('meta'); 
+                for (var z=0; z<metas.length; z++)
                 {
-                  // Got a meta http-equiv refresh tag
-                  var content = metas[z].getAttribute('content').split(';');
-                  if (content[0] == '0' && content[1].substring(0, 4).toUpperCase() == 'URL=')
+                  if (metas[z].getAttribute('http-equiv') == 'refresh')
                   {
-                    var new_link = content[1].substring(4);
-                    if (new_link != resultObject.longUrl)
+                    // Got a meta http-equiv refresh tag
+                    var content = metas[z].getAttribute('content').split(';');
+                    if (content[0] == '0' && content[1].substring(0, 4).toUpperCase() == 'URL=')
                     {
-                      LongURL.followURL(new_link, resultObject, i);
-                      break switch_block;
+                      var new_link = content[1].substring(4);
+                      if (new_link != resultObject.longUrl)
+                      {
+                        LongURL.followURL(new_link, resultObject, i);
+                        break switch_block;
+                      }
                     }
                   }
                 }
-              }
-              resultObject.longUrl = xhr.responseURL;
-              pageData = LongURL.gatherPageData(xhr, resultObject);
-              LongURL.callbacks[i](pageData);
-              break;
-            case 301:
-            case 302:
-            case 303:
-            case 307:
-            case 308:
-              // Got a redirect
-              var new_link = xhr.getResponseHeader('Location');
-              if (new_link == null)
-              {
-                // Got a redirect without a location header, so we'll treat this like a 200
+                resultObject.longUrl = xhr.responseURL;
                 pageData = LongURL.gatherPageData(xhr, resultObject);
                 LongURL.callbacks[i](pageData);
-              }
-              else
-              {
-                LongURL.followURL(new_link, resultObject, i);
-              }
-              break;
-            default:
-              // Got something else we're not sure how to handle
-              console.log(LongURL.options.logHeader + ' [ERROR] xhr.status='+xhr.status);
-              break;
+                break;
+              case 301:
+              case 302:
+              case 303:
+              case 307:
+              case 308:
+                // Got a redirect
+                var new_link = xhr.getResponseHeader('Location');
+                if (new_link == null)
+                {
+                  // Got a redirect without a location header, so we'll treat this like a 200
+                  pageData = LongURL.gatherPageData(xhr, resultObject);
+                  LongURL.callbacks[i](pageData);
+                }
+                else
+                {
+                  LongURL.followURL(new_link, resultObject, i);
+                }
+                break;
+              default:
+                // Got something else we're not sure how to handle
+                console.log(LongURL.options.logHeader + ' [ERROR] xhr.status='+xhr.status);
+                break;
+            }
           }
         }
       }
+      xhr.responseType = "document";
+      xhr.open('GET', link, true);
+      xhr.send();
     }
-    xhr.responseType = "document";
-    xhr.open('GET', link, true);
-    xhr.send();
   },
   
   // Gather the page data into an object to use later
