@@ -11,7 +11,7 @@ additional extensions that worked but weren't included in the list obtained
 from LongURL.org, but since the extension was reworked to function on its
 own, this list is now all the services, not just "extra" ones.
 
-Copyright (c) 2011-2016, David Mueller
+Copyright (c) 2011-2017, David Mueller
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -350,6 +350,7 @@ SERVICES = ['›.ws',
             'owl.li',
             'p2.to',
             'path.to',
+            'paxex.me',
             'pep.si',
             'ping.fm',
             'pitch.pe',
@@ -507,6 +508,7 @@ SERVICES = ['›.ws',
             'u.mavrev.com',
             'u.nu',
             'u76.org',
+            'uafly.co',
             'ub0.cc',
             'ulu.lu',
             'un.cr',
